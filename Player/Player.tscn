@@ -3,6 +3,14 @@
 [ext_resource type="Script" uid="uid://2nelg4o7s51m" path="res://Player/Scripts/player_logic.gd" id="1_3qydi"]
 [ext_resource type="Theme" uid="uid://cjpxvynj4h0ss" path="res://Player/MainUItheme.tres" id="2_q3lat"]
 [ext_resource type="Script" uid="uid://dv8qe28bxxrvy" path="res://Player/Scripts/menus.gd" id="2_tok1r"]
+[ext_resource type="AudioStream" uid="uid://b0odevr04clfk" path="res://Sounds/Footsteps/footstep_Stone01.mp3" id="4_8g4oa"]
+[ext_resource type="AudioStream" uid="uid://cuq7fv7ynmhyf" path="res://Sounds/Footsteps/footstep_Grass01.mp3" id="4_v0k0e"]
+[ext_resource type="AudioStream" uid="uid://dvtmhkmkhnvsl" path="res://Sounds/Footsteps/footstep_Grass02.mp3" id="5_5wa8t"]
+[ext_resource type="AudioStream" uid="uid://b7s2l1s1prlte" path="res://Sounds/Footsteps/footstep_Stone02.mp3" id="5_6ysni"]
+[ext_resource type="AudioStream" uid="uid://47wom1yossar" path="res://Sounds/Footsteps/footstep_Gravel01.wav" id="6_p7tob"]
+[ext_resource type="AudioStream" uid="uid://biq2fdutfg0d0" path="res://Sounds/Footsteps/footstep_Metal01.wav" id="7_dm7nj"]
+[ext_resource type="AudioStream" uid="uid://bk58brrhxf6ia" path="res://Sounds/Footsteps/footstep_Wood01.wav" id="10_3mea3"]
+[ext_resource type="AudioStream" uid="uid://d2jdcer7wktbo" path="res://Sounds/Footsteps/footstep_Wood02.wav" id="11_7v5gs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tok1r"]
 bg_color = Color(0.5294118, 0.5294118, 0.5294118, 1)
@@ -39,6 +47,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0.62649167, 0), Vector3(0, 0.59216917, 0), Vector3(0, 0.62649167, 0), Vector3(0, 0.59216917, 0), Vector3(0, 0.62649167, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.90000004),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_tok1r"]
@@ -357,6 +382,48 @@ offset_left = 461.0
 offset_top = 52.0
 offset_right = 910.0
 offset_bottom = 546.0
+
+[node name="Sound" type="Node3D" parent="." unique_id=1096792519]
+
+[node name="footstep_Grass01" type="AudioStreamPlayer3D" parent="Sound" unique_id=1852963346]
+stream = ExtResource("4_v0k0e")
+max_distance = 20.0
+max_polyphony = 5
+
+[node name="footstep_Grass02" type="AudioStreamPlayer3D" parent="Sound" unique_id=2073641975]
+stream = ExtResource("5_5wa8t")
+max_distance = 20.0
+max_polyphony = 5
+
+[node name="footstep_Gravel01" type="AudioStreamPlayer3D" parent="Sound" unique_id=1855531665]
+stream = ExtResource("6_p7tob")
+max_distance = 20.0
+max_polyphony = 5
+
+[node name="footstep_Metal01" type="AudioStreamPlayer3D" parent="Sound" unique_id=491145636]
+stream = ExtResource("7_dm7nj")
+max_distance = 20.0
+max_polyphony = 5
+
+[node name="footstep_Stone01" type="AudioStreamPlayer3D" parent="Sound" unique_id=128453866]
+stream = ExtResource("4_8g4oa")
+max_distance = 20.0
+max_polyphony = 5
+
+[node name="footstep_Stone02" type="AudioStreamPlayer3D" parent="Sound" unique_id=10262139]
+stream = ExtResource("5_6ysni")
+max_distance = 20.0
+max_polyphony = 5
+
+[node name="footstep_Wood01" type="AudioStreamPlayer3D" parent="Sound" unique_id=1936873914]
+stream = ExtResource("10_3mea3")
+max_distance = 20.0
+max_polyphony = 5
+
+[node name="footstep_Wood02" type="AudioStreamPlayer3D" parent="Sound" unique_id=944233915]
+stream = ExtResource("11_7v5gs")
+max_distance = 20.0
+max_polyphony = 5
 
 [node name="CamPoint" type="Node3D" parent="." unique_id=325325687]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.62649167, 0)

@@ -142,3 +142,23 @@ func healPlayer(healAmount : int):
 		Health = 100
 	
 	Health += healAmount
+
+
+### FOOTSTEPS BASED OFF GROUP ###
+func play_step_sound():
+	if $FloorMatCheck.is_colliding():
+		var collider = $FloorMatCheck.get_collider()
+		if collider.is_in_group("grass"):
+			$Sound/footstep_Grass01.play()
+			
+		elif collider.is_in_group("gravel"):
+			$Sound/footstep_Gravel01.play()
+			
+		elif collider.is_in_group("metal"):
+			$Sound/footstep_Metal01.play()
+			
+		elif collider.is_in_group("stone"):
+			$Sound/footstep_Stone01.play()
+			
+		elif collider.is_in_group("wood"):
+			$Sound/footstep_Wood01.play()

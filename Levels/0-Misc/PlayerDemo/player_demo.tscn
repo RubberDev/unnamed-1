@@ -9,6 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://c1lelb8y5q7b2" path="res://Objects/door_01.tscn" id="7_y16st"]
 [ext_resource type="PackedScene" uid="uid://cao4pnxml12s6" path="res://Objects/LightSwitch_01.tscn" id="8_70s6o"]
 [ext_resource type="PackedScene" uid="uid://vvju5gx8ha6y" path="res://Objects/1 Debug/eviler_cube.tscn" id="9_wwekk"]
+[ext_resource type="Material" uid="uid://bunctkrkd7f1a" path="res://Materials/Debug-Textures/GreenCheckered.tres" id="10_nn73h"]
+[ext_resource type="Material" uid="uid://42udas6d8tvt" path="res://Materials/Metal_01.tres" id="11_lber8"]
+[ext_resource type="Texture2D" uid="uid://mi48jlb7b0l3" path="res://Textures/Wood/plywood_diff_1k.png" id="12_ur6w5"]
+[ext_resource type="Texture2D" uid="uid://da25e3cy4e767" path="res://Textures/Wood/plywood_nor_gl_1k.png" id="13_6467s"]
+[ext_resource type="Texture2D" uid="uid://b7aoyjswcj7eg" path="res://Textures/Wood/plywood_rough_1k.png" id="14_8nfit"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ld26l"]
 panorama = ExtResource("1_kwe4r")
@@ -19,6 +24,12 @@ sky_material = SubResource("PanoramaSkyMaterial_ld26l")
 [sub_resource type="Environment" id="Environment_fptwy"]
 background_mode = 2
 sky = SubResource("Sky_5nq6m")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ouiov"]
+albedo_texture = ExtResource("12_ur6w5")
+roughness_texture = ExtResource("14_8nfit")
+normal_enabled = true
+normal_texture = ExtResource("13_6467s")
 
 [node name="Player-Demo" type="Node3D" unique_id=269395692]
 
@@ -79,3 +90,37 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8490696, 1.5145435, -0.761
 [node name="eviler_cube" parent="." unique_id=1901567136 instance=ExtResource("9_wwekk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -7)
 dmgAmount = 5
+
+[node name="Grass" type="CSGBox3D" parent="." unique_id=1643366249 groups=["grass"]]
+transform = Transform3D(1, 0, 0, 0, 0.25, 0, 0, 0, 6, -8.586953, 0, 13.019831)
+use_collision = true
+collision_layer = 3
+size = Vector3(4.2557373, 1, 1)
+material = ExtResource("10_nn73h")
+
+[node name="Gravel" type="CSGBox3D" parent="." unique_id=1614456288 groups=["gravel"]]
+transform = Transform3D(1, 0, 0, 0, 0.25, 0, 0, 0, 6, -4.2829204, 0, 13.019831)
+use_collision = true
+collision_layer = 3
+size = Vector3(4.2557373, 1, 1)
+
+[node name="Metal" type="CSGBox3D" parent="." unique_id=2078447504 groups=["metal"]]
+transform = Transform3D(1, 0, 0, 0, 0.25, 0, 0, 0, 6, 0.03058815, 0, 13.019831)
+use_collision = true
+collision_layer = 3
+size = Vector3(4.2557373, 1, 1)
+material = ExtResource("11_lber8")
+
+[node name="Stone" type="CSGBox3D" parent="." unique_id=1589328599 groups=["stone"]]
+transform = Transform3D(1, 0, 0, 0, 0.25, 0, 0, 0, 6, 4.341711, 0, 13.019831)
+use_collision = true
+collision_layer = 3
+size = Vector3(4.2557373, 1, 1)
+material = ExtResource("2_ld26l")
+
+[node name="Wood" type="CSGBox3D" parent="." unique_id=277301859 groups=["wood"]]
+transform = Transform3D(1, 0, 0, 0, 0.25, 0, 0, 0, 6, 8.666118, 0, 13.019831)
+use_collision = true
+collision_layer = 3
+size = Vector3(4.2557373, 1, 1)
+material = SubResource("StandardMaterial3D_ouiov")
