@@ -4,6 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://mi48jlb7b0l3" path="res://Textures/Wood/plywood_diff_1k.png" id="1_n4pvv"]
 [ext_resource type="Texture2D" uid="uid://b7aoyjswcj7eg" path="res://Textures/Wood/plywood_rough_1k.png" id="2_3dn1d"]
 [ext_resource type="Texture2D" uid="uid://da25e3cy4e767" path="res://Textures/Wood/plywood_nor_gl_1k.png" id="2_qlklt"]
+[ext_resource type="AudioStream" uid="uid://rb4l56rdxos1" path="res://Sounds/DoorOpen01.wav" id="2_wetba"]
+[ext_resource type="AudioStream" uid="uid://j06v43xrshgd" path="res://Sounds/CloseDoor01.wav" id="3_uua8t"]
+[ext_resource type="AudioStream" uid="uid://furea8unykko" path="res://Sounds/DoorLocked.wav" id="4_2qhva"]
 [ext_resource type="Material" uid="uid://42udas6d8tvt" path="res://Materials/Metal_01.tres" id="4_bkxpq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bkxpq"]
@@ -190,7 +193,19 @@ _data = {
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 script = ExtResource("1_bkxpq")
 
-[node name="Sounds" type="Node" parent="." unique_id=50646770]
+[node name="Sounds" type="Node3D" parent="." unique_id=587231201]
+
+[node name="OpenDoor" type="AudioStreamPlayer3D" parent="Sounds" unique_id=492320161]
+stream = ExtResource("2_wetba")
+max_distance = 10.0
+
+[node name="CloseDoor" type="AudioStreamPlayer3D" parent="Sounds" unique_id=218734823]
+stream = ExtResource("3_uua8t")
+max_distance = 10.0
+
+[node name="LockedDoor" type="AudioStreamPlayer3D" parent="Sounds" unique_id=2035054871]
+stream = ExtResource("4_2qhva")
+max_distance = 10.0
 
 [node name="Col1" type="CollisionShape3D" parent="." unique_id=200078636]
 transform = Transform3D(0.24183375, 0, 0, 0, 5.295134, 0, 0, 0, 3.0528443, 0, 0, 0)

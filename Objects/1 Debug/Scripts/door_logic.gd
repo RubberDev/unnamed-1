@@ -13,10 +13,13 @@ func Interact():
 			$Col1.set_deferred("disabled", true)
 			$Col2.set_deferred("disabled", false)
 			Open = true
+			$Sounds/OpenDoor.play()
 		else:
 			$AnimationPlayer.play_backwards("Open")
 			$Col1.set_deferred("disabled", false)
 			$Col2.set_deferred("disabled", true)
 			Open = false
+			$Sounds/CloseDoor.play()
 	else:
 		$AnimationPlayer.play("Locked")
+		$Sounds/LockedDoor.play()

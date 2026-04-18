@@ -115,9 +115,11 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_pressed("Sprint"):
 		if Crouched == false:
 			SPEED = 5.0
+			$AnimationPlayer.speed_scale = 2.0
 	elif Input.is_action_just_released("Sprint"):
 		if Crouched == false:
 			SPEED = 2.5
+			$AnimationPlayer.speed_scale = 1.0
 
 
 ### PLAYER DAMAGE FUNC ###

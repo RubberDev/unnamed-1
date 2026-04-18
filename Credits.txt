@@ -44,6 +44,9 @@ Heavy_footstep.wav by RonaldVanWonderen -- https://freesound.org/s/110099/ -- Li
 FPS Footsteps Loop by qubodup -- https://freesound.org/s/816019/ -- License: Creative Commons 0
 Footstep_Metal_Crouch_5.wav by GiocoSound -- https://freesound.org/s/421151/ -- License: Creative Commons 0
 Right Gravel Footstep 5 by Ali_6868 -- https://freesound.org/s/384880/ -- License: Creative Commons 0
+Door, Front, Opening, A.wav by InspectorJ -- https://freesound.org/s/431117/ -- License: Attribution 4.0
+door close 3.wav by theplax -- https://freesound.org/s/609734/ -- License: Attribution 4.0
+locking a door_02.wav by Dymewiz -- https://freesound.org/s/131029/ -- License: Attribution 4.0
 https://www.youtube.com/watch?v=jJonTXSmUOw -- Free SFX -- Creative Commons Attribution
 
 Programs used
