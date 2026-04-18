@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://clrxmfoeht23b" path="res://Objects/1 Debug/Scripts/lightSwitch_logic.gd" id="1_hvl5t"]
 [ext_resource type="Material" uid="uid://c2b5wlvnwgsaj" path="res://Materials/Shiny-Plastic.tres" id="1_nhred"]
+[ext_resource type="AudioStream" uid="uid://dkx6dxsnxhplg" path="res://Sounds/LightswitchOn01.wav" id="2_tulu8"]
+[ext_resource type="AudioStream" uid="uid://c1gcxu88b5gvu" path="res://Sounds/LightswitchOff01.wav" id="3_c7qcp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pqvbc"]
 resource_name = "Material.001"
@@ -121,7 +123,15 @@ _data = {
 [node name="LightSwitch_01" type="StaticBody3D" unique_id=1886332968]
 script = ExtResource("1_hvl5t")
 
-[node name="Sound" type="Node" parent="." unique_id=1734020704]
+[node name="Sound" type="Node3D" parent="." unique_id=1571699456]
+
+[node name="SwitchOn" type="AudioStreamPlayer3D" parent="Sound" unique_id=84428243]
+stream = ExtResource("2_tulu8")
+max_distance = 10.0
+
+[node name="SwitchOff" type="AudioStreamPlayer3D" parent="Sound" unique_id=1656745768]
+stream = ExtResource("3_c7qcp")
+max_distance = 10.0
 
 [node name="Body" type="Node3D" parent="." unique_id=828258674]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)

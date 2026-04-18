@@ -14,7 +14,9 @@ func Interact():
 		Enabled = true
 		$Lights/Light1.light_energy = base_energy
 		$AnimationPlayer.play("Switch")
+		$Sound/SwitchOn.play()
 	else:
 		Enabled = false
 		$Lights/Light1.light_energy = 0.0
 		$AnimationPlayer.play_backwards("Switch")
+		$Sound/SwitchOff.play()
