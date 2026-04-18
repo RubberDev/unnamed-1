@@ -37,6 +37,14 @@ Godot Engine Community Discord Server
 
 Sound Effects
 Freesound.org
+YouTube.com
+
+Heavy_wood_footstep 2.wav by RonaldVanWonderen -- https://freesound.org/s/110101/ -- License: Attribution 4.0
+Heavy_footstep.wav by RonaldVanWonderen -- https://freesound.org/s/110099/ -- License: Attribution 4.0
+FPS Footsteps Loop by qubodup -- https://freesound.org/s/816019/ -- License: Creative Commons 0
+Footstep_Metal_Crouch_5.wav by GiocoSound -- https://freesound.org/s/421151/ -- License: Creative Commons 0
+Right Gravel Footstep 5 by Ali_6868 -- https://freesound.org/s/384880/ -- License: Creative Commons 0
+https://www.youtube.com/watch?v=jJonTXSmUOw -- Free SFX -- Creative Commons Attribution
 
 Programs used
 Godot
