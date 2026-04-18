@@ -1,0 +1,44 @@
+Credits
+
+Created by
+Rubber
+
+Programming
+Rubber
+
+Programming Assistance
+Godot Engine Community Discord Server members
+StackExchange users
+
+Animation
+Rubber
+
+Writing
+Rubber
+
+3D Modelling
+Rubber
+
+Textures
+Rubber
+Poly Haven
+Kenney.nl
+
+Voice Actors
+ADD LATER
+
+Playtesters
+ToxicWaste
+AustinDoesStuff
+Atticus D. Vanguard
+
+Additional Help
+Godot Engine Community Discord Server
+
+Sound Effects
+Freesound.org
+
+Programs used
+Godot
+Audacity
+Blender

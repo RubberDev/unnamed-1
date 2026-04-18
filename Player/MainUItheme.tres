@@ -1,0 +1,18 @@
+[gd_resource type="Theme" format=3 uid="uid://cjpxvynj4h0ss"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vgngc"]
+bg_color = Color(0.30692264, 0.3069227, 0.30692258, 1)
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yddbp"]
+bg_color = Color(0.52906674, 0.5290667, 0.5290667, 1)
+shadow_size = 2
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xweyq"]
+bg_color = Color(0.68440056, 0.15735272, 0.19385353, 1)
+
+[resource]
+Panel/styles/panel = SubResource("StyleBoxFlat_vgngc")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_yddbp")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_xweyq")

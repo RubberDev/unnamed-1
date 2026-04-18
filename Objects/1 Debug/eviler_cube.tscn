@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://vvju5gx8ha6y"]
+
+[ext_resource type="Texture2D" uid="uid://cnqmeoyrx51n1" path="res://addons/kenney_prototype_textures/orange/texture_10.png" id="1_2s8si"]
+[ext_resource type="Script" uid="uid://dt8jo6t6fv1jo" path="res://Objects/1 Debug/Scripts/eviler_cube_logic.gd" id="1_otx4f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_otx4f"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xlrn7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_khtuv"]
+albedo_texture = ExtResource("1_2s8si")
+uv1_triplanar = true
+
+[node name="eviler_cube" type="Area3D" unique_id=1901567136]
+script = ExtResource("1_otx4f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1715474081]
+shape = SubResource("BoxShape3D_otx4f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=1144909540]
+mesh = SubResource("BoxMesh_xlrn7")
+surface_material_override/0 = SubResource("StandardMaterial3D_khtuv")
+
+[node name="Timer" type="Timer" parent="." unique_id=1244824517]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

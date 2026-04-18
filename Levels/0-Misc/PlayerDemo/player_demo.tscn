@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://cbeapa747ha34"]
+
+[ext_resource type="Texture2D" uid="uid://ca43bsu2c7iv6" path="res://Materials/Skies/qwantani_noon_puresky_2k.hdr" id="1_kwe4r"]
+[ext_resource type="Material" uid="uid://chuf7vrvtnrge" path="res://Materials/Debug-Textures/WhiteCheckered.tres" id="2_ld26l"]
+[ext_resource type="PackedScene" uid="uid://ds0uurstfuisq" path="res://Player/Player.tscn" id="3_ld26l"]
+[ext_resource type="PackedScene" uid="uid://dc6autgx20uu7" path="res://Objects/1 Debug/evil_cube.tscn" id="4_5nq6m"]
+[ext_resource type="PackedScene" uid="uid://u0t1j0ojh88g" path="res://Objects/1 Debug/nice_cube.tscn" id="5_fptwy"]
+[ext_resource type="PackedScene" uid="uid://up0g1don1uj3" path="res://Objects/1 Debug/interactee_cube.tscn" id="6_87xbs"]
+[ext_resource type="PackedScene" uid="uid://c1lelb8y5q7b2" path="res://Objects/door_01.tscn" id="7_y16st"]
+[ext_resource type="PackedScene" uid="uid://cao4pnxml12s6" path="res://Objects/LightSwitch_01.tscn" id="8_70s6o"]
+[ext_resource type="PackedScene" uid="uid://vvju5gx8ha6y" path="res://Objects/1 Debug/eviler_cube.tscn" id="9_wwekk"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ld26l"]
+panorama = ExtResource("1_kwe4r")
+
+[sub_resource type="Sky" id="Sky_5nq6m"]
+sky_material = SubResource("PanoramaSkyMaterial_ld26l")
+
+[sub_resource type="Environment" id="Environment_fptwy"]
+background_mode = 2
+sky = SubResource("Sky_5nq6m")
+
+[node name="Player-Demo" type="Node3D" unique_id=269395692]
+
+[node name="Env" type="Node" parent="." unique_id=488675153]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Env" unique_id=154934739]
+environment = SubResource("Environment_fptwy")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Env" unique_id=548626884]
+transform = Transform3D(0.7071068, 0.59510463, -0.3819037, 0, 0.5400934, 0.84160507, 0.7071068, -0.59510463, 0.3819037, 0, 4.420527, 0)
+light_energy = 0.5
+shadow_enabled = true
+
+[node name="Floor" type="CSGCombiner3D" parent="." unique_id=1194033233 groups=["stone"]]
+use_collision = true
+collision_layer = 3
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Floor" unique_id=612102696]
+transform = Transform3D(20, 0, 0, 0, 0.25, 0, 0, 0, 20, 0, 0, 0)
+use_collision = true
+material = ExtResource("2_ld26l")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Floor/CSGBox3D" unique_id=1485389566]
+transform = Transform3D(0.39999998, 0, 0, 0, 1.4, 0, 0, 0, 0.19999999, 0, 0, 0.24999999)
+operation = 2
+use_collision = true
+material = ExtResource("2_ld26l")
+
+[node name="Player" parent="." unique_id=1961546648 instance=ExtResource("3_ld26l")]
+
+[node name="Evil-Cube" parent="." unique_id=101793265 instance=ExtResource("4_5nq6m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -7)
+dmgAmount = 10
+
+[node name="Nice-Cube" parent="." unique_id=1444056763 instance=ExtResource("5_fptwy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -7)
+healAmount = 10
+
+[node name="Interactee-Cube" parent="." unique_id=1742351904 instance=ExtResource("6_87xbs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, -7)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=478089287]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 4, 6, 1.8127441, 0)
+use_collision = true
+size = Vector3(1, 1.3745117, 1)
+material = ExtResource("2_ld26l")
+
+[node name="Door_01" parent="." unique_id=487549286 instance=ExtResource("7_y16st")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -6.6438932, 1.455515, -4.5888305)
+
+[node name="Door_02" parent="." unique_id=488303019 instance=ExtResource("7_y16st")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -6.6438932, 1.455515, -6.5888305)
+locked = true
+
+[node name="LightSwitch_01" parent="." unique_id=1886332968 instance=ExtResource("8_70s6o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8490696, 1.5145435, -0.7610724)
+
+[node name="eviler_cube" parent="." unique_id=1901567136 instance=ExtResource("9_wwekk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -7)
+dmgAmount = 5

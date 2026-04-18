@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dc6autgx20uu7"]
+
+[ext_resource type="Material" uid="uid://dl5vru6umisb5" path="res://Materials/Debug-Textures/RedChecker.tres" id="1_c7ys4"]
+[ext_resource type="Script" uid="uid://cb5l3ujvh2rc5" path="res://Objects/1 Debug/Scripts/evil_cube.gd" id="1_vu7sq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vu7sq"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_v661v"]
+
+[node name="Evil-Cube" type="StaticBody3D" unique_id=101793265]
+script = ExtResource("1_vu7sq")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1399144255]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=23100165]
+shape = SubResource("BoxShape3D_vu7sq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D/CollisionShape3D" unique_id=1519233219]
+mesh = SubResource("BoxMesh_v661v")
+surface_material_override/0 = ExtResource("1_c7ys4")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

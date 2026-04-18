@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://up0g1don1uj3"]
+
+[ext_resource type="Script" uid="uid://bch71epsh1v6f" path="res://Objects/1 Debug/Scripts/interactee_cube.gd" id="1_0ngs5"]
+[ext_resource type="Material" uid="uid://chuf7vrvtnrge" path="res://Materials/Debug-Textures/WhiteCheckered.tres" id="1_qmrvt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0ngs5"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_eckrw"]
+
+[node name="Interactee-Cube" type="StaticBody3D" unique_id=1742351904]
+script = ExtResource("1_0ngs5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=814289877]
+shape = SubResource("BoxShape3D_0ngs5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=631470544]
+mesh = SubResource("BoxMesh_eckrw")
+surface_material_override/0 = ExtResource("1_qmrvt")

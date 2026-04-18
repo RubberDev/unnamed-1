@@ -1,0 +1,391 @@
+[gd_scene format=3 uid="uid://ds0uurstfuisq"]
+
+[ext_resource type="Script" uid="uid://2nelg4o7s51m" path="res://Player/Scripts/player_logic.gd" id="1_3qydi"]
+[ext_resource type="Theme" uid="uid://cjpxvynj4h0ss" path="res://Player/MainUItheme.tres" id="2_q3lat"]
+[ext_resource type="Script" uid="uid://dv8qe28bxxrvy" path="res://Player/Scripts/menus.gd" id="2_tok1r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tok1r"]
+bg_color = Color(0.5294118, 0.5294118, 0.5294118, 1)
+shadow_size = 2
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ddoul"]
+bg_color = Color(0.31317842, 0.7566848, 0.8762505, 1)
+
+[sub_resource type="Theme" id="Theme_8g4oa"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_tok1r")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_ddoul")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l2ndj"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3qydi"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tok1r"]
+radius = 0.45996094
+height = 0.9711914
+
+[sub_resource type="Animation" id="Animation_8g4oa"]
+resource_name = "CamBob"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CamPoint:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.90000004, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.62649167, 0), Vector3(0, 0.59216917, 0), Vector3(0, 0.62649167, 0), Vector3(0, 0.59216917, 0), Vector3(0, 0.62649167, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tok1r"]
+resource_name = "Crouch"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CamPoint:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.62649167, 0), Vector3(0, -0.2811277, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6ysni"]
+resource_name = "Crouching"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CamPoint:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.2811277, 0), Vector3(0, -0.30547285, 0), Vector3(0, -0.2811277, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vlldt"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CamPoint:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.62649167, 0), Vector3(0, 0.6058389, 0), Vector3(0, 0.62649167, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ddoul"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CamPoint:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.62649167, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_s1rgi"]
+resource_name = "Sprint"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CamPoint:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.40000004, 0.6, 0.8000001, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.62649167, 0), Vector3(0, 0.6056589, 0), Vector3(0, 0.62649167, 0), Vector3(0, 0.6056589, 0), Vector3(0, 0.62649167, 0), Vector3(0, 0.6056589, 0), Vector3(0, 0.62649167, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8g4oa"]
+_data = {
+&"CamBob": SubResource("Animation_8g4oa"),
+&"Crouch": SubResource("Animation_tok1r"),
+&"Crouching": SubResource("Animation_6ysni"),
+&"Idle": SubResource("Animation_vlldt"),
+&"RESET": SubResource("Animation_ddoul"),
+&"Sprint": SubResource("Animation_s1rgi")
+}
+
+[node name="Player" type="CharacterBody3D" unique_id=1961546648]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+floor_stop_on_slope = false
+script = ExtResource("1_3qydi")
+
+[node name="Menus" type="Node" parent="." unique_id=1566356152]
+script = ExtResource("2_tok1r")
+
+[node name="Interface" type="Control" parent="Menus" unique_id=1029787573]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menus/Interface" unique_id=1627420118]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 536.0
+offset_right = 273.0
+offset_bottom = 610.0
+theme_override_constants/separation = 18
+
+[node name="HealthBar" type="ProgressBar" parent="Menus/Interface/VBoxContainer" unique_id=705532329]
+layout_mode = 2
+theme = ExtResource("2_q3lat")
+step = 1.0
+value = 100.0
+
+[node name="StaminaBar" type="ProgressBar" parent="Menus/Interface/VBoxContainer" unique_id=1204120000]
+layout_mode = 2
+theme = SubResource("Theme_8g4oa")
+step = 0.1
+value = 100.0
+
+[node name="PauseMenu" type="Control" parent="Menus" unique_id=1202040894]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 354.0
+offset_top = 69.0
+offset_right = -354.0
+offset_bottom = -69.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_q3lat")
+metadata/_edit_lock_ = true
+
+[node name="Panel" type="Panel" parent="Menus/PauseMenu" unique_id=2066492517]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_q3lat")
+
+[node name="Label" type="Label" parent="Menus/PauseMenu/Panel" unique_id=1760526421]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 76.0
+grow_horizontal = 2
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PauseMain" type="VBoxContainer" parent="Menus/PauseMenu/Panel" unique_id=87744262]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 37.0
+offset_top = 76.0
+offset_right = -37.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Resume" type="Button" parent="Menus/PauseMenu/Panel/PauseMain" unique_id=439446732]
+layout_mode = 2
+text = "Resume"
+
+[node name="Settings" type="Button" parent="Menus/PauseMenu/Panel/PauseMain" unique_id=1171532248]
+layout_mode = 2
+text = "Settings"
+
+[node name="Save" type="Button" parent="Menus/PauseMenu/Panel/PauseMain" unique_id=136177584]
+layout_mode = 2
+text = "Save game"
+
+[node name="Load" type="Button" parent="Menus/PauseMenu/Panel/PauseMain" unique_id=429300922]
+layout_mode = 2
+text = "Load save"
+
+[node name="Quit2Menu" type="Button" parent="Menus/PauseMenu/Panel/PauseMain" unique_id=703910310]
+layout_mode = 2
+text = "Quit to menu"
+
+[node name="Quit2Desktop" type="Button" parent="Menus/PauseMenu/Panel/PauseMain" unique_id=1781708209]
+layout_mode = 2
+text = "Quit to desktop"
+
+[node name="Settings" type="Control" parent="Menus/PauseMenu" unique_id=198812927]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -235.0
+offset_top = -18.0
+offset_right = 235.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Menus/PauseMenu/Settings" unique_id=1690703970]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Menus/PauseMenu/Settings/Panel" unique_id=878029317]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 52.0
+grow_horizontal = 2
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menus/PauseMenu/Settings/Panel" unique_id=1496826155]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 52.0
+offset_right = 453.0
+offset_bottom = 546.0
+
+[node name="VolLabel" type="Label" parent="Menus/PauseMenu/Settings/Panel/VBoxContainer" unique_id=109304170]
+layout_mode = 2
+text = "Volume: VAL"
+
+[node name="VolumeSlide" type="HSlider" parent="Menus/PauseMenu/Settings/Panel/VBoxContainer" unique_id=1449451026]
+layout_mode = 2
+
+[node name="FOVLabel" type="Label" parent="Menus/PauseMenu/Settings/Panel/VBoxContainer" unique_id=1248947792]
+layout_mode = 2
+text = "Field of View: VAL"
+
+[node name="FOVslide" type="HSlider" parent="Menus/PauseMenu/Settings/Panel/VBoxContainer" unique_id=1575168258]
+layout_mode = 2
+
+[node name="SensLabel" type="Label" parent="Menus/PauseMenu/Settings/Panel/VBoxContainer" unique_id=77584668]
+layout_mode = 2
+text = "Sensitivity: VAL"
+
+[node name="SensSlide" type="HSlider" parent="Menus/PauseMenu/Settings/Panel/VBoxContainer" unique_id=859479252]
+layout_mode = 2
+
+[node name="WindLabel" type="Label" parent="Menus/PauseMenu/Settings/Panel/VBoxContainer" unique_id=1568399159]
+layout_mode = 2
+text = "Window Mode"
+
+[node name="WindowMode" type="OptionButton" parent="Menus/PauseMenu/Settings/Panel/VBoxContainer" unique_id=786067166]
+layout_mode = 2
+selected = 1
+item_count = 3
+popup/item_0/text = "Windowed"
+popup/item_0/id = 0
+popup/item_1/text = "Windowed Borderless"
+popup/item_1/id = 1
+popup/item_2/text = "Fullscreen"
+popup/item_2/id = 2
+
+[node name="AliasLabel" type="Label" parent="Menus/PauseMenu/Settings/Panel/VBoxContainer" unique_id=2075038299]
+layout_mode = 2
+text = "Anti-Aliasing"
+
+[node name="AntiAliasing" type="OptionButton" parent="Menus/PauseMenu/Settings/Panel/VBoxContainer" unique_id=912005304]
+layout_mode = 2
+selected = 4
+item_count = 5
+popup/item_0/text = "MSAA x8"
+popup/item_0/id = 0
+popup/item_1/text = "MSAA x4"
+popup/item_1/id = 1
+popup/item_2/text = "MSAA x2"
+popup/item_2/id = 2
+popup/item_3/text = "TAA"
+popup/item_3/id = 3
+popup/item_4/text = "Disabled"
+popup/item_4/id = 4
+
+[node name="ShadowLabel" type="Label" parent="Menus/PauseMenu/Settings/Panel/VBoxContainer" unique_id=1490530249]
+layout_mode = 2
+text = "Shadow Quality (Add items later)"
+
+[node name="Shadows" type="OptionButton" parent="Menus/PauseMenu/Settings/Panel/VBoxContainer" unique_id=1146492297]
+layout_mode = 2
+
+[node name="ScaleLabel" type="Label" parent="Menus/PauseMenu/Settings/Panel/VBoxContainer" unique_id=1672187339]
+layout_mode = 2
+text = "Scaling"
+
+[node name="OptionButton" type="OptionButton" parent="Menus/PauseMenu/Settings/Panel/VBoxContainer" unique_id=499691357]
+layout_mode = 2
+selected = 2
+item_count = 3
+popup/item_0/text = "FSR 2.2"
+popup/item_0/id = 0
+popup/item_1/text = "FSR 1.0"
+popup/item_1/id = 1
+popup/item_2/text = "Bilinear"
+popup/item_2/id = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Menus/PauseMenu/Settings/Panel" unique_id=249357033]
+layout_mode = 0
+offset_left = 461.0
+offset_top = 52.0
+offset_right = 910.0
+offset_bottom = 546.0
+
+[node name="CamPoint" type="Node3D" parent="." unique_id=325325687]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.62649167, 0)
+
+[node name="PlayerCam" type="Camera3D" parent="CamPoint" unique_id=298046606]
+current = true
+
+[node name="RayCastInteract" type="RayCast3D" parent="CamPoint/PlayerCam" unique_id=879934382]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, -2)
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=631751864]
+shape = SubResource("CapsuleShape3D_l2ndj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Collision" unique_id=367026812]
+mesh = SubResource("CapsuleMesh_3qydi")
+
+[node name="CrouchCollision" type="CollisionShape3D" parent="." unique_id=959035845]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5144043, 0)
+shape = SubResource("CapsuleShape3D_tok1r")
+
+[node name="CrouchRay" type="RayCast3D" parent="CrouchCollision" unique_id=1907469214]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44829428, 0)
+target_position = Vector3(0, 1, 0)
+
+[node name="FloorMatCheck" type="RayCast3D" parent="." unique_id=334958743]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.816224, 0)
+target_position = Vector3(0, -0.5, 0)
+collision_mask = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=174052046]
+libraries/ = SubResource("AnimationLibrary_8g4oa")

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://u0t1j0ojh88g"]
+
+[ext_resource type="Script" uid="uid://bopwk3nqgje3h" path="res://Objects/1 Debug/Scripts/nice_cube.gd" id="1_2d5br"]
+[ext_resource type="Material" uid="uid://bunctkrkd7f1a" path="res://Materials/Debug-Textures/GreenCheckered.tres" id="1_7y4sg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2d5br"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2hamv"]
+
+[node name="Nice-Cube" type="StaticBody3D" unique_id=1444056763]
+script = ExtResource("1_2d5br")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1243824523]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1268857089]
+shape = SubResource("BoxShape3D_2d5br")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D/CollisionShape3D" unique_id=1377683446]
+mesh = SubResource("BoxMesh_2hamv")
+surface_material_override/0 = ExtResource("1_7y4sg")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
