@@ -2,10 +2,14 @@ class_name Player
 extends CharacterBody3D
 
 var SENSITIVITY = 0.005
+var DEFAULT_SPEED = 2.5
 var SPEED = 2.5
+var SPRINT_SPEED = 5.0
+var CROUCH_SPEED = 1.5
 var JUMP_VELOCITY = 4.5
 
 @export var Health : int = 100
+var Dead : bool = false
 var Crouched : bool = false
 
 
@@ -17,12 +21,12 @@ func _ready() -> void:
 
 ### CALL EVERY FRAME ###
 func _process(_delta: float) -> void:
-	
 	### DECREASE STAMINA ###
 	# I wonder if there is a better way to do this
 	if Input.is_action_pressed("Sprint"):
-		if Crouched == false:
-			$Menus/Interface/VBoxContainer/StaminaBar.value -= 0.1
+		if Input.is_action_pressed("Forward") or Input.is_action_pressed("Backward") or Input.is_action_pressed("Left") or Input.is_action_pressed("Right"):
+			if Crouched == false:
+				$Menus/Interface/VBoxContainer/StaminaBar.value -= 0.1
 	else:
 		$Menus/Interface/VBoxContainer/StaminaBar.value += 0.1
 
@@ -35,23 +39,24 @@ func _physics_process(delta: float) -> void:
 
 	### JUMPING ###
 	if Input.is_action_just_pressed("Jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		if Dead == false:
+			velocity.y = JUMP_VELOCITY
 	
 	### MOVEMENT ###
 	var input_dir := Input.get_vector("Left", "Right", "Forward", "Backward")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	var vel2d := Vector2(velocity.x, velocity.z)
 	var DEACC : float = SPEED * 0.1
-	if direction:
+	if direction and Dead == false:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
-		if Crouched == false:
+		if Crouched == false and Dead == false:
 			$AnimationPlayer.play("CamBob")
 	else:
 		vel2d = vel2d.move_toward(Vector2.ZERO, DEACC)
 		velocity.x = vel2d.x
 		velocity.z = vel2d.y
-		if Crouched == false:
+		if Crouched == false and Dead == false:
 			$AnimationPlayer.play("Idle")
 	move_and_slide()
 	
@@ -64,6 +69,7 @@ func _physics_process(delta: float) -> void:
 			c.get_collider().apply_central_impulse(-c.get_normal() * Push_Force)
 
 
+### MOUSE FREEDOM ###
 func jail_mouse():
 	# Put that bitch in jail
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -72,9 +78,11 @@ func free_mouse():
 
 
 ### KEY/MOUSE INPUT ###
+var Held_Object = null
+var HoldingSmth : bool = false
 func _input(event: InputEvent) -> void:
 	### PLAYER'S CAMERA MOVEMENT WITH MOUSE MOTION ###
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and Dead == false:
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 			rotate_y(-event.relative.x * SENSITIVITY)
 			$CamPoint.rotate_x(-event.relative.y * SENSITIVITY)
@@ -88,38 +96,61 @@ func _input(event: InputEvent) -> void:
 			jail_mouse()
 	
 	### INTERACTING WITH OBJECTS ###
-	if Input.is_action_just_pressed("Interact"):
+	if Input.is_action_just_pressed("Interact") and Dead == false:
 		if %RayCastInteract.is_colliding():
 			var collider = %RayCastInteract.get_collider()
 			if collider.has_method("Interact"):
 				collider.Interact()
-				print("Interacted")
+
+	### PICKING UP AND DROPPING THINGS ###
+	if Input.is_action_just_pressed("Grab") and Dead == false:
+		if %RayCastInteract.is_colliding():
+			var collider = %RayCastInteract.get_collider()
+			if collider.is_in_group("Grabable"):
+				if HoldingSmth == false:
+					collider.reparent($CamPoint/Hand)
+					collider.freeze = true
+					collider.global_position = $CamPoint/Hand.global_position
+					collider.rotation = Vector3(0,0,0)
+					collider.collision_layer = 0
+					Held_Object = collider
+					HoldingSmth = true
+	if Input.is_action_just_pressed("Drop"):
+		if HoldingSmth == true:
+			DropObj()
 	
 	### CROUCHING AND UNCROUCHING ###
-	if Input.is_action_just_pressed("Crouch"):
+	if Input.is_action_just_pressed("Crouch") and Dead == false:
 		# Yeah thats right, on your knees like a good boy
 		if Crouched == false:
 			$AnimationPlayer.play("Crouching")
 			Crouched = true
 			$Collision.set_deferred("disabled", true)
-			SPEED = 1.5
+			SPEED = CROUCH_SPEED
 		elif Crouched == true:
 			if not $CrouchCollision/CrouchRay.is_colliding():
 				# Okay stand up now
 				$AnimationPlayer.play("CamBob")
 				Crouched = false
 				$Collision.set_deferred("disabled", false)
-				SPEED = 2.5
+				SPEED = DEFAULT_SPEED
 	
 	### SPRINTING ###
-	if Input.is_action_pressed("Sprint"):
+	if Input.is_action_pressed("Sprint") and Dead == false:
 		if Crouched == false:
-			SPEED = 5.0
-			$AnimationPlayer.speed_scale = 2.0
-	elif Input.is_action_just_released("Sprint"):
+			if Input.is_action_pressed("Forward") or Input.is_action_pressed("Backward") or Input.is_action_pressed("Left") or Input.is_action_pressed("Right"):
+				SPEED = SPRINT_SPEED
+				$AnimationPlayer.speed_scale = 2.0
+	elif Input.is_action_just_released("Sprint") and Dead == false:
 		if Crouched == false:
-			SPEED = 2.5
+			SPEED = DEFAULT_SPEED
 			$AnimationPlayer.speed_scale = 1.0
+func DropObj():
+	Held_Object.reparent(get_tree().current_scene)
+	Held_Object.freeze = false
+	Held_Object.collision_layer = 1
+	Held_Object = null
+	HoldingSmth = false
 
 
 ### PLAYER DAMAGE FUNC ###
@@ -132,7 +163,7 @@ func damagePlayer(dmgAmount : int):
 	Health -= dmgAmount
 	
 	if Health <= 0:
-		# Placeholder
+		Die()
 		print("Died")
 
 
@@ -146,9 +177,16 @@ func healPlayer(healAmount : int):
 	Health += healAmount
 
 
+### PLAYER DEATH FUNC ###
+func Die():
+	$AnimationPlayer.play("Die")
+	free_mouse()
+	Dead = true
+
+
 ### FOOTSTEPS BASED OFF GROUP ###
 func play_step_sound():
-	if $FloorMatCheck.is_colliding():
+	if $FloorMatCheck.is_colliding() and Dead == false:
 		var collider = $FloorMatCheck.get_collider()
 		if collider.is_in_group("grass"):
 			$Sound/footstep_Grass01.play()

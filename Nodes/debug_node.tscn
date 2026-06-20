@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bl7lnvy2eq8le"]
+
+[ext_resource type="Texture2D" uid="uid://t75cj1v7idv7" path="res://Textures/Debug/Node.png" id="1_hbt3x"]
+
+[node name="DebugNode" type="Sprite3D" unique_id=1202280773]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+billboard = 1
+texture = ExtResource("1_hbt3x")

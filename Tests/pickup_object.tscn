@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c8v7oenkhkdcj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_3xd07"]
+size = Vector3(0.3466797, 0.38452148, 0.4177246)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3xd07"]
+size = Vector3(0.36132813, 0.38452148, 0.4140625)
+
+[node name="PickupCube" type="RigidBody3D" unique_id=243999079 groups=["Grabable"]]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=572115319]
+mesh = SubResource("BoxMesh_3xd07")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1764438646]
+shape = SubResource("BoxShape3D_3xd07")

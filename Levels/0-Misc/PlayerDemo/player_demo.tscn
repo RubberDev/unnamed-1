@@ -4,9 +4,11 @@
 [ext_resource type="Material" uid="uid://chuf7vrvtnrge" path="res://Materials/Debug-Textures/WhiteCheckered.tres" id="2_ld26l"]
 [ext_resource type="PackedScene" uid="uid://ds0uurstfuisq" path="res://Player/Player.tscn" id="3_ld26l"]
 [ext_resource type="PackedScene" uid="uid://dc6autgx20uu7" path="res://Objects/1 Debug/evil_cube.tscn" id="4_5nq6m"]
+[ext_resource type="PackedScene" uid="uid://bl7lnvy2eq8le" path="res://Nodes/debug_node.tscn" id="4_ur6w5"]
+[ext_resource type="PackedScene" uid="uid://c8v7oenkhkdcj" path="res://Tests/pickup_object.tscn" id="5_6467s"]
 [ext_resource type="PackedScene" uid="uid://u0t1j0ojh88g" path="res://Objects/1 Debug/nice_cube.tscn" id="5_fptwy"]
 [ext_resource type="PackedScene" uid="uid://up0g1don1uj3" path="res://Objects/1 Debug/interactee_cube.tscn" id="6_87xbs"]
-[ext_resource type="PackedScene" uid="uid://c1lelb8y5q7b2" path="res://Objects/door_01.tscn" id="7_y16st"]
+[ext_resource type="PackedScene" uid="uid://c1lelb8y5q7b2" path="res://Objects/Doors/door_01.tscn" id="7_y16st"]
 [ext_resource type="PackedScene" uid="uid://cao4pnxml12s6" path="res://Objects/LightSwitch_01.tscn" id="8_70s6o"]
 [ext_resource type="PackedScene" uid="uid://vvju5gx8ha6y" path="res://Objects/1 Debug/eviler_cube.tscn" id="9_wwekk"]
 [ext_resource type="Material" uid="uid://bunctkrkd7f1a" path="res://Materials/Debug-Textures/GreenCheckered.tres" id="10_nn73h"]
@@ -14,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://mi48jlb7b0l3" path="res://Textures/Wood/plywood_diff_1k.png" id="12_ur6w5"]
 [ext_resource type="Texture2D" uid="uid://da25e3cy4e767" path="res://Textures/Wood/plywood_nor_gl_1k.png" id="13_6467s"]
 [ext_resource type="Texture2D" uid="uid://b7aoyjswcj7eg" path="res://Textures/Wood/plywood_rough_1k.png" id="14_8nfit"]
+[ext_resource type="PackedScene" uid="uid://cmi5tjfoxcx2b" path="res://Nodes/health_spawner_node.tscn" id="15_lber8"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ld26l"]
 panorama = ExtResource("1_kwe4r")
@@ -60,9 +63,24 @@ material = ExtResource("2_ld26l")
 
 [node name="Player" parent="." unique_id=1961546648 instance=ExtResource("3_ld26l")]
 
+[node name="CamPoint" type="Node3D" parent="Player" unique_id=712572481]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.62649167, 0)
+
+[node name="PlayerCam" type="Camera3D" parent="Player/CamPoint" unique_id=1601587571]
+current = true
+
+[node name="RayCastInteract" type="RayCast3D" parent="Player/CamPoint/PlayerCam" unique_id=1512241683]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, -2)
+
+[node name="Hand" type="Node3D" parent="Player/CamPoint" unique_id=432010862]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41060036, -0.21589112, -0.99678206)
+
+[node name="DebugNode" parent="Player/CamPoint/Hand" unique_id=1202280773 instance=ExtResource("4_ur6w5")]
+
 [node name="Evil-Cube" parent="." unique_id=101793265 instance=ExtResource("4_5nq6m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -7)
-dmgAmount = 10
+dmgAmount = 50
 
 [node name="Nice-Cube" parent="." unique_id=1444056763 instance=ExtResource("5_fptwy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -7)
@@ -124,3 +142,13 @@ use_collision = true
 collision_layer = 3
 size = Vector3(4.2557373, 1, 1)
 material = SubResource("StandardMaterial3D_ouiov")
+
+[node name="Health_Spawner_Node" parent="." unique_id=601064145 instance=ExtResource("15_lber8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.757942, 0.8276973, 1.5606844)
+
+[node name="PickupCube" parent="." unique_id=243999079 instance=ExtResource("5_6467s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06533432, 0.31726027, -2.9150956)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="PickupCube" unique_id=84877067]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4856084, 0, 0)
+size = Vector3(1, 0.12207031, 0.17285156)

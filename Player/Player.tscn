@@ -99,6 +99,22 @@ tracks/0/keys = {
 "values": [Vector3(0, -0.2811277, 0), Vector3(0, -0.30547285, 0), Vector3(0, -0.2811277, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_p7tob"]
+resource_name = "Die"
+length = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CamPoint:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.62649167, 0), Vector3(0, -0.5536691, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_vlldt"]
 resource_name = "Idle"
 loop_mode = 1
@@ -152,6 +168,7 @@ _data = {
 &"CamBob": SubResource("Animation_8g4oa"),
 &"Crouch": SubResource("Animation_tok1r"),
 &"Crouching": SubResource("Animation_6ysni"),
+&"Die": SubResource("Animation_p7tob"),
 &"Idle": SubResource("Animation_vlldt"),
 &"RESET": SubResource("Animation_ddoul"),
 &"Sprint": SubResource("Animation_s1rgi")
@@ -424,16 +441,6 @@ max_polyphony = 5
 stream = ExtResource("11_7v5gs")
 max_distance = 20.0
 max_polyphony = 5
-
-[node name="CamPoint" type="Node3D" parent="." unique_id=325325687]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.62649167, 0)
-
-[node name="PlayerCam" type="Camera3D" parent="CamPoint" unique_id=298046606]
-current = true
-
-[node name="RayCastInteract" type="RayCast3D" parent="CamPoint/PlayerCam" unique_id=879934382]
-unique_name_in_owner = true
-target_position = Vector3(0, 0, -2)
 
 [node name="Collision" type="CollisionShape3D" parent="." unique_id=631751864]
 shape = SubResource("CapsuleShape3D_l2ndj")

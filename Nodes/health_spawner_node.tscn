@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cmi5tjfoxcx2b"]
+
+[ext_resource type="Script" uid="uid://djceynif6gtuh" path="res://Nodes/scripts/health_spawner_node.gd" id="1_inty2"]
+[ext_resource type="Texture2D" uid="uid://t75cj1v7idv7" path="res://Textures/Debug/Node.png" id="2_cxxi3"]
+
+[node name="Health_Spawner_Node" type="Node3D" unique_id=601064145]
+script = ExtResource("1_inty2")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1864640856]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+billboard = 1
+texture = ExtResource("2_cxxi3")
