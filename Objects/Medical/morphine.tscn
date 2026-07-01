@@ -1,14 +1,13 @@
 [gd_scene format=3 uid="uid://ciadxxlyd8iq1"]
 
 [ext_resource type="Script" uid="uid://cvycofbknctrm" path="res://Objects/Medical/Scripts/morphine.gd" id="1_6gr6k"]
+[ext_resource type="PackedScene" uid="uid://bhymy6nerm0ly" path="res://Models/Syringe.fbx" id="2_absu8"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_pseen"]
 radius = 0.5608106
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_6gr6k"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_6gr6k"]
-size = Vector3(1, 2.040039, 1)
+size = Vector3(0.30273438, 1.9814453, 0.26342773)
 
 [node name="Morphine" type="RigidBody3D" unique_id=188256592]
 script = ExtResource("1_6gr6k")
@@ -18,12 +17,13 @@ script = ExtResource("1_6gr6k")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1795812929]
 shape = SubResource("SphereShape3D_pseen")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=493611560]
-transform = Transform3D(-1.3113417e-08, -0.4, 0, 0.3, -1.7484556e-08, 0, 0, 0, 0.3, 0, 0, 0)
-mesh = SubResource("CylinderMesh_6gr6k")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=727601823]
 transform = Transform3D(-1.3113417e-08, -0.4, 0, 0.3, -1.7484556e-08, 0, 0, 0, 0.3, 0, 0, 0)
 shape = SubResource("BoxShape3D_6gr6k")
 
+[node name="Syringe" parent="." unique_id=844596373 instance=ExtResource("2_absu8")]
+transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, 0.106420875, 0, -4.6518043e-09)
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+
+[editable path="Syringe"]

@@ -77,6 +77,7 @@ target_position = Vector3(0, 0, -2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41060036, -0.21589112, -0.99678206)
 
 [node name="DebugNode" parent="Player/CamPoint/Hand" unique_id=1202280773 instance=ExtResource("4_ur6w5")]
+visible = false
 
 [node name="Evil-Cube" parent="." unique_id=101793265 instance=ExtResource("4_5nq6m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -7)

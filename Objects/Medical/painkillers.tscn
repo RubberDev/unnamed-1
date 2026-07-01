@@ -1,13 +1,9 @@
 [gd_scene format=3 uid="uid://dxlld5x2e131f"]
 
 [ext_resource type="Script" uid="uid://spug8jv4bna0" path="res://Objects/Medical/Scripts/painkillers.gd" id="1_mg5uv"]
+[ext_resource type="ArrayMesh" uid="uid://dlyk6w0my3hy2" path="res://Models/Painkillers.obj" id="2_h4wil"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mg5uv"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_eocsx"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mg5uv"]
-albedo_color = Color(0.7192615, 0.4619969, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h4wil"]
 size = Vector3(1, 2.0759277, 1)
@@ -20,13 +16,12 @@ script = ExtResource("1_mg5uv")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=240378759]
 shape = SubResource("SphereShape3D_mg5uv")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1349392616]
-transform = Transform3D(0.28170252, 0, 0, 0, 0.22418427, 0, 0, 0, 0.28545374, 0, 0, 0)
-mesh = SubResource("CylinderMesh_eocsx")
-surface_material_override/0 = SubResource("StandardMaterial3D_mg5uv")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=251280927]
 transform = Transform3D(0.28170252, 0, 0, 0, 0.22418427, 0, 0, 0, 0.28545374, 0, 0, 0)
 shape = SubResource("BoxShape3D_h4wil")
+
+[node name="Painkillers" type="MeshInstance3D" parent="." unique_id=765430628]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, -0.05848393, 0)
+mesh = ExtResource("2_h4wil")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

@@ -208,7 +208,7 @@ value = 100.0
 [node name="StaminaBar" type="ProgressBar" parent="Menus/Interface/VBoxContainer" unique_id=1204120000]
 layout_mode = 2
 theme = SubResource("Theme_8g4oa")
-step = 0.1
+step = 0.05
 value = 100.0
 
 [node name="PauseMenu" type="Control" parent="Menus" unique_id=1202040894]

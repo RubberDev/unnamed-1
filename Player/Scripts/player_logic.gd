@@ -25,9 +25,11 @@ func _process(_delta: float) -> void:
 	# I wonder if there is a better way to do this
 	if Input.is_action_pressed("Sprint"):
 		if Input.is_action_pressed("Forward") or Input.is_action_pressed("Backward") or Input.is_action_pressed("Left") or Input.is_action_pressed("Right"):
-			if Crouched == false:
-				$Menus/Interface/VBoxContainer/StaminaBar.value -= 0.1
+			if Crouched == false and Dead == false:
+				$Menus/Interface/VBoxContainer/StaminaBar.value -= 0.05
 	else:
+		if Crouched == true:
+			$Menus/Interface/VBoxContainer/StaminaBar.value += 0.2
 		$Menus/Interface/VBoxContainer/StaminaBar.value += 0.1
 
 
@@ -139,7 +141,10 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_pressed("Sprint") and Dead == false:
 		if Crouched == false:
 			if Input.is_action_pressed("Forward") or Input.is_action_pressed("Backward") or Input.is_action_pressed("Left") or Input.is_action_pressed("Right"):
-				SPEED = SPRINT_SPEED
+				if $Menus/Interface/VBoxContainer/StaminaBar.value <= 1.0:
+					SPEED = CROUCH_SPEED
+				elif $Menus/Interface/VBoxContainer/StaminaBar.value > 1.0:
+					SPEED = SPRINT_SPEED
 				$AnimationPlayer.speed_scale = 2.0
 	elif Input.is_action_just_released("Sprint") and Dead == false:
 		if Crouched == false:
