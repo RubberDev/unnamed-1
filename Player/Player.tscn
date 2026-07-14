@@ -32,154 +32,13 @@ ProgressBar/styles/fill = SubResource("StyleBoxFlat_ddoul")
 radius = 0.45996094
 height = 0.9711914
 
-[sub_resource type="Animation" id="Animation_8g4oa"]
-resource_name = "CamBob"
-length = 1.2
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CamPoint:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6, 0.90000004, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0.62649167, 0), Vector3(0, 0.59216917, 0), Vector3(0, 0.62649167, 0), Vector3(0, 0.59216917, 0), Vector3(0, 0.62649167, 0)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.3, 0.90000004),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [],
-"method": &"play_step_sound"
-}, {
-"args": [],
-"method": &"play_step_sound"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_tok1r"]
-resource_name = "Crouch"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CamPoint:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0.62649167, 0), Vector3(0, -0.2811277, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_6ysni"]
-resource_name = "Crouching"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CamPoint:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, -0.2811277, 0), Vector3(0, -0.30547285, 0), Vector3(0, -0.2811277, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_p7tob"]
-resource_name = "Die"
-length = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CamPoint:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.033333335),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0.62649167, 0), Vector3(0, -0.5536691, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_vlldt"]
-resource_name = "Idle"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CamPoint:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0.62649167, 0), Vector3(0, 0.6058389, 0), Vector3(0, 0.62649167, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_ddoul"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CamPoint:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0.62649167, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_s1rgi"]
-resource_name = "Sprint"
-length = 1.2
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CamPoint:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.20000002, 0.40000004, 0.6, 0.8000001, 1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0.62649167, 0), Vector3(0, 0.6056589, 0), Vector3(0, 0.62649167, 0), Vector3(0, 0.6056589, 0), Vector3(0, 0.62649167, 0), Vector3(0, 0.6056589, 0), Vector3(0, 0.62649167, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_8g4oa"]
-_data = {
-&"CamBob": SubResource("Animation_8g4oa"),
-&"Crouch": SubResource("Animation_tok1r"),
-&"Crouching": SubResource("Animation_6ysni"),
-&"Die": SubResource("Animation_p7tob"),
-&"Idle": SubResource("Animation_vlldt"),
-&"RESET": SubResource("Animation_ddoul"),
-&"Sprint": SubResource("Animation_s1rgi")
-}
-
 [node name="Player" type="CharacterBody3D" unique_id=1961546648]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 floor_stop_on_slope = false
 script = ExtResource("1_3qydi")
 
 [node name="Menus" type="Node" parent="." unique_id=1566356152]
+process_mode = 3
 script = ExtResource("2_tok1r")
 
 [node name="Interface" type="Control" parent="Menus" unique_id=1029787573]
@@ -212,6 +71,7 @@ step = 0.05
 value = 100.0
 
 [node name="PauseMenu" type="Control" parent="Menus" unique_id=1202040894]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -280,6 +140,7 @@ layout_mode = 2
 text = "Quit to desktop"
 
 [node name="Settings" type="Control" parent="Menus/PauseMenu" unique_id=198812927]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -322,6 +183,8 @@ text = "Volume: VAL"
 
 [node name="VolumeSlide" type="HSlider" parent="Menus/PauseMenu/Settings/Panel/VBoxContainer" unique_id=1449451026]
 layout_mode = 2
+max_value = 10.0
+step = 0.1
 
 [node name="FOVLabel" type="Label" parent="Menus/PauseMenu/Settings/Panel/VBoxContainer" unique_id=1248947792]
 layout_mode = 2
@@ -329,6 +192,8 @@ text = "Field of View: VAL"
 
 [node name="FOVslide" type="HSlider" parent="Menus/PauseMenu/Settings/Panel/VBoxContainer" unique_id=1575168258]
 layout_mode = 2
+max_value = 110.0
+step = 5.0
 
 [node name="SensLabel" type="Label" parent="Menus/PauseMenu/Settings/Panel/VBoxContainer" unique_id=77584668]
 layout_mode = 2
@@ -336,6 +201,10 @@ text = "Sensitivity: VAL"
 
 [node name="SensSlide" type="HSlider" parent="Menus/PauseMenu/Settings/Panel/VBoxContainer" unique_id=859479252]
 layout_mode = 2
+min_value = 0.001
+max_value = 0.1
+step = 0.001
+value = 0.005
 
 [node name="WindLabel" type="Label" parent="Menus/PauseMenu/Settings/Panel/VBoxContainer" unique_id=1568399159]
 layout_mode = 2
@@ -382,7 +251,7 @@ layout_mode = 2
 layout_mode = 2
 text = "Scaling"
 
-[node name="OptionButton" type="OptionButton" parent="Menus/PauseMenu/Settings/Panel/VBoxContainer" unique_id=499691357]
+[node name="ScaleButton" type="OptionButton" parent="Menus/PauseMenu/Settings/Panel/VBoxContainer" unique_id=499691357]
 layout_mode = 2
 selected = 2
 item_count = 3
@@ -399,6 +268,15 @@ offset_left = 461.0
 offset_top = 52.0
 offset_right = 910.0
 offset_bottom = 546.0
+
+[node name="CloseSettings" type="Button" parent="Menus/PauseMenu/Settings/Panel" unique_id=1144088879]
+layout_mode = 0
+offset_left = 868.0
+offset_top = 8.0
+offset_right = 906.0
+offset_bottom = 46.0
+theme = ExtResource("2_q3lat")
+text = "X"
 
 [node name="Sound" type="Node3D" parent="." unique_id=1096792519]
 
@@ -461,5 +339,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.816224, 0)
 target_position = Vector3(0, -0.5, 0)
 collision_mask = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=174052046]
-libraries/ = SubResource("AnimationLibrary_8g4oa")
+[connection signal="pressed" from="Menus/PauseMenu/Panel/PauseMain/Resume" to="Menus" method="_on_resume_pressed"]
+[connection signal="pressed" from="Menus/PauseMenu/Panel/PauseMain/Settings" to="Menus" method="_on_settings_pressed"]
+[connection signal="pressed" from="Menus/PauseMenu/Panel/PauseMain/Quit2Desktop" to="Menus" method="_on_quit_2_desktop_pressed"]
+[connection signal="value_changed" from="Menus/PauseMenu/Settings/Panel/VBoxContainer/VolumeSlide" to="Menus" method="_on_volume_slide_value_changed"]
+[connection signal="value_changed" from="Menus/PauseMenu/Settings/Panel/VBoxContainer/FOVslide" to="Menus" method="_on_fo_vslide_value_changed"]
+[connection signal="value_changed" from="Menus/PauseMenu/Settings/Panel/VBoxContainer/SensSlide" to="Menus" method="_on_sens_slide_value_changed"]
+[connection signal="item_selected" from="Menus/PauseMenu/Settings/Panel/VBoxContainer/WindowMode" to="Menus" method="_on_window_mode_item_selected"]
+[connection signal="item_selected" from="Menus/PauseMenu/Settings/Panel/VBoxContainer/AntiAliasing" to="Menus" method="_on_anti_aliasing_item_selected"]
+[connection signal="item_selected" from="Menus/PauseMenu/Settings/Panel/VBoxContainer/Shadows" to="Menus" method="_on_shadows_item_selected"]
+[connection signal="item_selected" from="Menus/PauseMenu/Settings/Panel/VBoxContainer/ScaleButton" to="Menus" method="_on_scale_button_item_selected"]
+[connection signal="pressed" from="Menus/PauseMenu/Settings/Panel/CloseSettings" to="Menus" method="_on_close_settings_pressed"]

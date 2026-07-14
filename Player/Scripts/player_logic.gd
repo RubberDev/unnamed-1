@@ -90,12 +90,6 @@ func _input(event: InputEvent) -> void:
 			$CamPoint.rotate_x(-event.relative.y * SENSITIVITY)
 			$CamPoint.rotation.x = clamp($CamPoint.rotation.x, -PI/2, PI/2)
 	
-	### TEMPORARY PAUSING TO EXIT GAME ###
-	if Input.is_action_just_pressed("Escape"):
-		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-			free_mouse()
-		elif Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
-			jail_mouse()
 	
 	### INTERACTING WITH OBJECTS ###
 	if Input.is_action_just_pressed("Interact") and Dead == false:
@@ -150,6 +144,8 @@ func _input(event: InputEvent) -> void:
 		if Crouched == false:
 			SPEED = DEFAULT_SPEED
 			$AnimationPlayer.speed_scale = 1.0
+
+
 func DropObj():
 	Held_Object.reparent(get_tree().current_scene)
 	Held_Object.freeze = false
