@@ -2,8 +2,14 @@ extends Node
 
 
 func _ready() -> void:
+	$PauseMenu/Settings/Panel/VBoxContainer/VolLabel.text = str(AudioServer.get_bus_name(0)) + " - " + str($PauseMenu/Settings/Panel/VBoxContainer/VolumeSlide.value * 10)
 	$PauseMenu/Settings/Panel/VBoxContainer/VolumeSlide.value = db_to_linear(AudioServer.get_bus_index("Master"))
-	$PauseMenu/Settings/Panel/VBoxContainer/VolLabel.text = "Volume: " + str($PauseMenu/Settings/Panel/VBoxContainer/VolumeSlide.value * 10)
+	
+	$PauseMenu/Settings/Panel/VBoxContainer/VoiLabel.text = str(AudioServer.get_bus_name(1)) + " - " + str($PauseMenu/Settings/Panel/VBoxContainer/VoiSlider.value * 10)
+	$PauseMenu/Settings/Panel/VBoxContainer/VoiSlider.value = db_to_linear(AudioServer.get_bus_index("Voices"))
+	
+	$PauseMenu/Settings/Panel/VBoxContainer/FootLabel.text = str(AudioServer.get_bus_name(2)) + " - " + str($PauseMenu/Settings/Panel/VBoxContainer/FootSlider.value * 10)
+	$PauseMenu/Settings/Panel/VBoxContainer/FootSlider.value = db_to_linear(AudioServer.get_bus_index("Footsteps"))
 
 
 func _process(_delta: float) -> void:
@@ -49,13 +55,28 @@ func _on_close_settings_pressed() -> void:
 
 ### SETTINGS MENU ###
 
-### VOLUME SLIDER ###
+### MASTER VOLUME SLIDER ###
 func _on_volume_slide_value_changed(value: float) -> void:
 	var bus = AudioServer.get_bus_index("Master")
-	var val = $PauseMenu/Settings/Panel/VBoxContainer/VolumeSlide.value
-	$PauseMenu/Settings/Panel/VBoxContainer/VolLabel.text = "Volume: " + str(val * 10)
+	$PauseMenu/Settings/Panel/VBoxContainer/VolLabel.text = str(AudioServer.get_bus_name(0)) + " - " + str(value * 10)
 	
-	AudioServer.set_bus_volume_db(bus, linear_to_db(val))
+	AudioServer.set_bus_volume_db(bus, linear_to_db(value))
+
+
+### VOICE VOLUME SLIDER ###
+func _on_voi_slider_value_changed(value: float) -> void:
+	var bus = AudioServer.get_bus_index("Voices")
+	$PauseMenu/Settings/Panel/VBoxContainer/VoiLabel.text = str(AudioServer.get_bus_name(1)) + " - " + str(value * 10)
+	
+	AudioServer.set_bus_volume_db(bus, linear_to_db(value))
+
+
+### FOOTSTEP VOLUME SLIDER ###
+func _on_foot_slider_value_changed(value: float) -> void:
+	var bus = AudioServer.get_bus_index("Footsteps")
+	$PauseMenu/Settings/Panel/VBoxContainer/FootLabel.text = str(AudioServer.get_bus_name(2)) + " - " + str(value * 10)
+	
+	AudioServer.set_bus_volume_db(bus, linear_to_db(value))
 
 
 ### FIELD OF VIEW SLIDER ###

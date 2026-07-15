@@ -11,52 +11,6 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bkxpq"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_wetba"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pqhk5"]
-resource_name = "Material.004"
-cull_mode = 2
-albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 1)
-roughness = 0.5
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_s2vkh"]
-_surfaces = [{
-"aabb": AABB(-1, -1, -1, 2, 2, 2),
-"format": 34896613377,
-"index_count": 36,
-"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA"),
-"name": "Material.004",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 8,
-"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAD/////AAAAAP//AAD//wAA////////AAD//wAAAAAAAA==")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_kxath"]
-resource_name = "Door_01_Cube_001"
-_surfaces = [{
-"aabb": AABB(-1, -1, -1, 2, 2, 2),
-"attribute_data": PackedByteArray("4iS92BzcgiEc3L3Y4iSCIf9fEY7/n/9//58Rjv9f/39LJTPYs9vLIbPbM9hLJcshG15aJeOhpRrjoVolG16lGgU52Zj5RhNZ+UbZmAU5E1kiuQ2a3MbfV9zGDZoiud9X"),
-"format": 34896613399,
-"index_count": 36,
-"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
-"material": SubResource("StandardMaterial3D_pqhk5"),
-"name": "Material.004",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 24,
-"vertex_data": PackedByteArray("AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNUAAAAAAAD///////8AAP//AAD//wAA/////wAAAAD/////AAAAAFTV////////VNX/////AABU1f//AAD//1TV//8AAP///78AAP//////v/////////+/AAAAAP///78AAAAAAAD/v///AAD///+///8AAAAA/78AAAAA////v/////8AAP//AAD///////8AAP//AAD/////////////VNVU1VTVVNVU1VTVVNVU1f+//7//v/+//7//v/+//7+qKqoqqiqqKqoqqiqqKqoq/////////////////////wAA/38AAP9/AAD/fwAA/3//f/+//3//v/9//7//f/+/")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_s2vkh")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qlklt"]
-albedo_texture = ExtResource("1_n4pvv")
-roughness_texture = ExtResource("2_3dn1d")
-normal_enabled = true
-normal_texture = ExtResource("2_qlklt")
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fcc3f"]
 resource_name = "Material.002"
 cull_mode = 2
@@ -135,6 +89,50 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_4c5ug")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pqhk5"]
+resource_name = "Material.004"
+cull_mode = 2
+albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 1)
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_s2vkh"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA"),
+"name": "Material.004",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAD/////AAAAAP//AAD//wAA////////AAD//wAAAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_kxath"]
+resource_name = "Door_01_Cube_001"
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"attribute_data": PackedByteArray("4iS92BzcgiEc3L3Y4iSCIf9fEY7/n/9//58Rjv9f/39LJTPYs9vLIbPbM9hLJcshG15aJeOhpRrjoVolG16lGgU52Zj5RhNZ+UbZmAU5E1kiuQ2a3MbfV9zGDZoiud9X"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_pqhk5"),
+"name": "Material.004",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNUAAAAAAAD///////8AAP//AAD//wAA/////wAAAAD/////AAAAAFTV////////VNX/////AABU1f//AAD//1TV//8AAP///78AAP//////v/////////+/AAAAAP///78AAAAAAAD/v///AAD///+///8AAAAA/78AAAAA////v/////8AAP//AAD///////8AAP//AAD/////////////VNVU1VTVVNVU1VTVVNVU1f+//7//v/+//7//v/+//7+qKqoqqiqqKqoqqiqqKqoq/////////////////////wAA/38AAP9/AAD/fwAA/3//f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_s2vkh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qlklt"]
+albedo_texture = ExtResource("1_n4pvv")
+roughness_texture = ExtResource("2_3dn1d")
+normal_enabled = true
+normal_texture = ExtResource("2_qlklt")
+
 [sub_resource type="Animation" id="Animation_uua8t"]
 resource_name = "Locked"
 length = 0.2
@@ -153,7 +151,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_bkxpq"]
 resource_name = "Open"
-length = 0.2
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -161,7 +159,7 @@ tracks/0/path = NodePath("RotatingPoint:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, -1.5707964, 0)]
@@ -222,15 +220,6 @@ transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, -1.51
 [node name="Door_01" type="StaticBody3D" parent="RotatingPoint" unique_id=1628079368]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5130894)
 
-[node name="Cube" type="CollisionShape3D" parent="RotatingPoint/Door_01" unique_id=2135994315]
-transform = Transform3D(0.1882918, 0, 0, 0, 5.3287587, 0, 0, 0, 3.0316362, 0, 0, 0)
-shape = SubResource("BoxShape3D_wetba")
-
-[node name="Cube" type="MeshInstance3D" parent="RotatingPoint/Door_01/Cube" unique_id=1538672327]
-transform = Transform3D(0.39001128, 0, 0, 0, 0.4993713, 0, 0, 0, 0.49996108, 0, 0, 0)
-mesh = SubResource("ArrayMesh_kxath")
-surface_material_override/0 = SubResource("StandardMaterial3D_qlklt")
-
 [node name="Cylinder_003" type="MeshInstance3D" parent="RotatingPoint/Door_01" unique_id=1410082494]
 transform = Transform3D(3.60786e-08, 0.058440574, 0, -0.10088307, 2.0899979e-08, 0, 0, 0, 0.10088307, 0.00013655424, -0.270784, 1.2873871)
 mesh = SubResource("ArrayMesh_1ixia")
@@ -240,6 +229,11 @@ surface_material_override/0 = ExtResource("4_bkxpq")
 transform = Transform3D(0, 0, -1, 1, 0, 0, 0, -1, 0, -6.116368e-05, -0.270784, 1.5180243)
 mesh = SubResource("ArrayMesh_hsfxx")
 surface_material_override/0 = ExtResource("4_bkxpq")
+
+[node name="Cube2" type="MeshInstance3D" parent="RotatingPoint/Door_01" unique_id=1538672327]
+transform = Transform3D(0.073435925, 0, 0, 0, 2.661029, 0, 0, 0, 1.5157, 0, 0, 0)
+mesh = SubResource("ArrayMesh_kxath")
+surface_material_override/0 = SubResource("StandardMaterial3D_qlklt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=421810476]
 libraries/ = SubResource("AnimationLibrary_uua8t")

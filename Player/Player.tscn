@@ -140,7 +140,6 @@ layout_mode = 2
 text = "Quit to desktop"
 
 [node name="Settings" type="Control" parent="Menus/PauseMenu" unique_id=198812927]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -179,9 +178,27 @@ offset_bottom = 546.0
 
 [node name="VolLabel" type="Label" parent="Menus/PauseMenu/Settings/Panel/VBoxContainer" unique_id=109304170]
 layout_mode = 2
-text = "Volume: VAL"
+text = "Master - VAL"
 
 [node name="VolumeSlide" type="HSlider" parent="Menus/PauseMenu/Settings/Panel/VBoxContainer" unique_id=1449451026]
+layout_mode = 2
+max_value = 10.0
+step = 0.1
+
+[node name="VoiLabel" type="Label" parent="Menus/PauseMenu/Settings/Panel/VBoxContainer" unique_id=824426990]
+layout_mode = 2
+text = "Voices - VAL"
+
+[node name="VoiSlider" type="HSlider" parent="Menus/PauseMenu/Settings/Panel/VBoxContainer" unique_id=1414069453]
+layout_mode = 2
+max_value = 10.0
+step = 0.1
+
+[node name="FootLabel" type="Label" parent="Menus/PauseMenu/Settings/Panel/VBoxContainer" unique_id=777139256]
+layout_mode = 2
+text = "Footsteps - VAL"
+
+[node name="FootSlider" type="HSlider" parent="Menus/PauseMenu/Settings/Panel/VBoxContainer" unique_id=1927691744]
 layout_mode = 2
 max_value = 10.0
 step = 0.1
@@ -284,41 +301,49 @@ text = "X"
 stream = ExtResource("4_v0k0e")
 max_distance = 20.0
 max_polyphony = 5
+bus = &"Footsteps"
 
 [node name="footstep_Grass02" type="AudioStreamPlayer3D" parent="Sound" unique_id=2073641975]
 stream = ExtResource("5_5wa8t")
 max_distance = 20.0
 max_polyphony = 5
+bus = &"Footsteps"
 
 [node name="footstep_Gravel01" type="AudioStreamPlayer3D" parent="Sound" unique_id=1855531665]
 stream = ExtResource("6_p7tob")
 max_distance = 20.0
 max_polyphony = 5
+bus = &"Footsteps"
 
 [node name="footstep_Metal01" type="AudioStreamPlayer3D" parent="Sound" unique_id=491145636]
 stream = ExtResource("7_dm7nj")
 max_distance = 20.0
 max_polyphony = 5
+bus = &"Footsteps"
 
 [node name="footstep_Stone01" type="AudioStreamPlayer3D" parent="Sound" unique_id=128453866]
 stream = ExtResource("4_8g4oa")
 max_distance = 20.0
 max_polyphony = 5
+bus = &"Footsteps"
 
 [node name="footstep_Stone02" type="AudioStreamPlayer3D" parent="Sound" unique_id=10262139]
 stream = ExtResource("5_6ysni")
 max_distance = 20.0
 max_polyphony = 5
+bus = &"Footsteps"
 
 [node name="footstep_Wood01" type="AudioStreamPlayer3D" parent="Sound" unique_id=1936873914]
 stream = ExtResource("10_3mea3")
 max_distance = 20.0
 max_polyphony = 5
+bus = &"Footsteps"
 
 [node name="footstep_Wood02" type="AudioStreamPlayer3D" parent="Sound" unique_id=944233915]
 stream = ExtResource("11_7v5gs")
 max_distance = 20.0
 max_polyphony = 5
+bus = &"Footsteps"
 
 [node name="Collision" type="CollisionShape3D" parent="." unique_id=631751864]
 shape = SubResource("CapsuleShape3D_l2ndj")
@@ -343,6 +368,8 @@ collision_mask = 2
 [connection signal="pressed" from="Menus/PauseMenu/Panel/PauseMain/Settings" to="Menus" method="_on_settings_pressed"]
 [connection signal="pressed" from="Menus/PauseMenu/Panel/PauseMain/Quit2Desktop" to="Menus" method="_on_quit_2_desktop_pressed"]
 [connection signal="value_changed" from="Menus/PauseMenu/Settings/Panel/VBoxContainer/VolumeSlide" to="Menus" method="_on_volume_slide_value_changed"]
+[connection signal="value_changed" from="Menus/PauseMenu/Settings/Panel/VBoxContainer/VoiSlider" to="Menus" method="_on_voi_slider_value_changed"]
+[connection signal="value_changed" from="Menus/PauseMenu/Settings/Panel/VBoxContainer/FootSlider" to="Menus" method="_on_foot_slider_value_changed"]
 [connection signal="value_changed" from="Menus/PauseMenu/Settings/Panel/VBoxContainer/FOVslide" to="Menus" method="_on_fo_vslide_value_changed"]
 [connection signal="value_changed" from="Menus/PauseMenu/Settings/Panel/VBoxContainer/SensSlide" to="Menus" method="_on_sens_slide_value_changed"]
 [connection signal="item_selected" from="Menus/PauseMenu/Settings/Panel/VBoxContainer/WindowMode" to="Menus" method="_on_window_mode_item_selected"]
