@@ -12,10 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://cao4pnxml12s6" path="res://Objects/LightSwitch_01.tscn" id="8_70s6o"]
 [ext_resource type="PackedScene" uid="uid://vvju5gx8ha6y" path="res://Objects/1 Debug/eviler_cube.tscn" id="9_wwekk"]
 [ext_resource type="Material" uid="uid://bunctkrkd7f1a" path="res://Materials/Debug-Textures/GreenCheckered.tres" id="10_nn73h"]
-[ext_resource type="Material" uid="uid://42udas6d8tvt" path="res://Materials/Metal_01.tres" id="11_lber8"]
-[ext_resource type="Texture2D" uid="uid://mi48jlb7b0l3" path="res://Textures/Wood/plywood_diff_1k.png" id="12_ur6w5"]
-[ext_resource type="Texture2D" uid="uid://da25e3cy4e767" path="res://Textures/Wood/plywood_nor_gl_1k.png" id="13_6467s"]
-[ext_resource type="Texture2D" uid="uid://b7aoyjswcj7eg" path="res://Textures/Wood/plywood_rough_1k.png" id="14_8nfit"]
+[ext_resource type="Material" uid="uid://42udas6d8tvt" path="res://Materials/Metal/Metal_01.tres" id="11_lber8"]
+[ext_resource type="Texture2D" uid="uid://mi48jlb7b0l3" path="res://Textures/Wood/Plywood/plywood_diff_1k.png" id="12_ur6w5"]
+[ext_resource type="Texture2D" uid="uid://da25e3cy4e767" path="res://Textures/Wood/Plywood/plywood_nor_gl_1k.png" id="13_6467s"]
+[ext_resource type="Texture2D" uid="uid://b7aoyjswcj7eg" path="res://Textures/Wood/Plywood/plywood_rough_1k.png" id="14_8nfit"]
 [ext_resource type="PackedScene" uid="uid://cmi5tjfoxcx2b" path="res://Nodes/health_spawner_node.tscn" id="15_lber8"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ld26l"]
@@ -215,7 +215,7 @@ current = true
 unique_name_in_owner = true
 target_position = Vector3(0, 0, -2)
 
-[node name="Hand" type="Node3D" parent="Player/CamPoint" unique_id=432010862]
+[node name="Hand" type="Node3D" parent="Player/CamPoint" unique_id=910091115]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41060036, -0.21589112, -0.99678206)
 
 [node name="DebugNode" parent="Player/CamPoint/Hand" unique_id=1202280773 instance=ExtResource("4_ur6w5")]
@@ -227,6 +227,7 @@ libraries/ = SubResource("AnimationLibrary_6467s")
 [node name="Evil-Cube" parent="." unique_id=101793265 instance=ExtResource("4_5nq6m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -7)
 dmgAmount = 50
+Debugging = true
 
 [node name="Nice-Cube" parent="." unique_id=1444056763 instance=ExtResource("5_fptwy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -7)

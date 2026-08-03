@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mi48jlb7b0l3"
-path.s3tc="res://.godot/imported/plywood_diff_1k.png-93b9142935430c27d337b30e3a662c58.s3tc.ctex"
+uid="uid://cmqqi1vo5ier8"
+path.s3tc="res://.godot/imported/Tiles002_2K-JPG_Roughness.jpg-924d8a330b2089ba0596f78b880c0924.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Textures/Wood/plywood_diff_1k.png"
-dest_files=["res://.godot/imported/plywood_diff_1k.png-93b9142935430c27d337b30e3a662c58.s3tc.ctex"]
+source_file="res://Textures/Floor/Tiles002/Tiles002_2K-JPG_Roughness.jpg"
+dest_files=["res://.godot/imported/Tiles002_2K-JPG_Roughness.jpg-924d8a330b2089ba0596f78b880c0924.s3tc.ctex"]
 
 [params]
 

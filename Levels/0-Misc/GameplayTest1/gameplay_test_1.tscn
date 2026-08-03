@@ -1,0 +1,321 @@
+[gd_scene format=3 uid="uid://bubew62n6oh5r"]
+
+[ext_resource type="PackedScene" uid="uid://ds0uurstfuisq" path="res://Player/Player.tscn" id="1_8jpp5"]
+[ext_resource type="PackedScene" uid="uid://bl7lnvy2eq8le" path="res://Nodes/debug_node.tscn" id="2_yclo2"]
+[ext_resource type="Material" uid="uid://bogdkqgktdpd8" path="res://Materials/Wood/Planks-Wood-Old.tres" id="3_fbisx"]
+[ext_resource type="PackedScene" uid="uid://c1lelb8y5q7b2" path="res://Objects/Doors/door_01.tscn" id="3_yclo2"]
+[ext_resource type="Script" uid="uid://ia7r7sagduij" path="res://Levels/0-Misc/GameplayTest1/scripts/begin_key.gd" id="5_cb6ev"]
+
+[sub_resource type="Environment" id="Environment_3xd07"]
+
+[sub_resource type="Animation" id="Animation_8g4oa"]
+resource_name = "CamBob"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CamPoint:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.90000004, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.62649167, 0), Vector3(0, 0.59216917, 0), Vector3(0, 0.62649167, 0), Vector3(0, 0.59216917, 0), Vector3(0, 0.62649167, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.90000004),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_tok1r"]
+resource_name = "Crouch"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CamPoint:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.62649167, 0), Vector3(0, -0.2811277, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6ysni"]
+resource_name = "Crouching"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CamPoint:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.2811277, 0), Vector3(0, -0.30547285, 0), Vector3(0, -0.2811277, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_p7tob"]
+resource_name = "Die"
+length = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CamPoint:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.62649167, 0), Vector3(0, -0.5536691, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vlldt"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CamPoint:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.62649167, 0), Vector3(0, 0.6058389, 0), Vector3(0, 0.62649167, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ddoul"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CamPoint:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.62649167, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_s1rgi"]
+resource_name = "Sprint"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CamPoint:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.40000004, 0.6, 0.8000001, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.62649167, 0), Vector3(0, 0.6056589, 0), Vector3(0, 0.62649167, 0), Vector3(0, 0.6056589, 0), Vector3(0, 0.62649167, 0), Vector3(0, 0.6056589, 0), Vector3(0, 0.62649167, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6467s"]
+_data = {
+&"CamBob": SubResource("Animation_8g4oa"),
+&"Crouch": SubResource("Animation_tok1r"),
+&"Crouching": SubResource("Animation_6ysni"),
+&"Die": SubResource("Animation_p7tob"),
+&"Idle": SubResource("Animation_vlldt"),
+&"RESET": SubResource("Animation_ddoul"),
+&"Sprint": SubResource("Animation_s1rgi")
+}
+
+[sub_resource type="BoxMesh" id="BoxMesh_3xd07"]
+size = Vector3(0.5625, 0.119140625, 0.28027344)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dwbtc"]
+size = Vector3(0.5654297, 0.13494873, 0.29003906)
+
+[node name="GameplayTest1" type="Node3D" unique_id=1105459877]
+
+[node name="Env" type="Node3D" parent="." unique_id=846335887]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.439209, 9.814335, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Env" unique_id=2114633660]
+environment = SubResource("Environment_3xd07")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Env" unique_id=1124442805]
+transform = Transform3D(0.7701692, 0, -0.6378396, 0.6378396, -4.371139e-08, 0.7701692, -2.7880855e-08, -1, -3.3665167e-08, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." unique_id=1961546648 instance=ExtResource("1_8jpp5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0721006, 0)
+
+[node name="CamPoint" type="Node3D" parent="Player" unique_id=2007521835]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.62649167, 0)
+
+[node name="PlayerCam" type="Camera3D" parent="Player/CamPoint" unique_id=532637648]
+current = true
+
+[node name="RayCastInteract" type="RayCast3D" parent="Player/CamPoint/PlayerCam" unique_id=1453955856]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, -2)
+
+[node name="Hand" type="Node3D" parent="Player/CamPoint" unique_id=1956054403]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41060036, -0.21589112, -0.99678206)
+
+[node name="DebugNode" parent="Player/CamPoint/Hand" unique_id=1202280773 instance=ExtResource("2_yclo2")]
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player" unique_id=1850344584]
+libraries/ = SubResource("AnimationLibrary_6467s")
+
+[node name="Begin" type="CSGCombiner3D" parent="." unique_id=1612473122 groups=["wood"]]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Begin" unique_id=1916720749]
+size = Vector3(21.042969, 0.26000977, 19.104492)
+material = ExtResource("3_fbisx")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Begin" unique_id=20399120]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.623583, 0)
+size = Vector3(21.042969, 0.26000977, 19.104492)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Begin" unique_id=1874490881]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.430699, 4.8626, 0.37070084)
+size = Vector3(0.18164063, 9.9852295, 19.845703)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Begin" unique_id=1919292254]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.24319744, 5.1226, -9.461399)
+size = Vector3(0.18164063, 9.9852295, 21.529297)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Begin/CSGBox3D4" unique_id=827169450]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.7424736, 0.26142597)
+operation = 2
+size = Vector3(1.1191406, 2.8004074, 1.5061951)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Begin" unique_id=1284405228]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.24319664, 5.1226, 9.105896)
+size = Vector3(0.18164063, 9.9852295, 21.529297)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Begin" unique_id=180842013]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.430699, 4.8626, -0.37070084)
+size = Vector3(0.18164063, 9.9852295, 19.845703)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Begin" unique_id=1016855633]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.203555, 0)
+shadow_enabled = true
+omni_range = 21.379496
+
+[node name="Door_01" parent="Begin" unique_id=487549286 instance=ExtResource("3_yclo2")]
+transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, 0.020690583, 1.4888915, -9.424219)
+locked = true
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Begin" unique_id=1642285931]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.905726, 0.59442353, 6.273583)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Begin" unique_id=1536112440]
+transform = Transform3D(0.94710207, 0, -0.3209325, 0, 1, 0, 0.3209325, 0, 0.94710207, 7.6459837, 0.59442353, 6.5553017)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Begin" unique_id=1862515506]
+transform = Transform3D(0.10124242, 0, -0.99486184, 0, 1, 0, 0.99486184, 0, 0.10124242, 6.623554, 0.59442353, 7.546862)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Begin" unique_id=728438083]
+transform = Transform3D(0.109300524, 0, -0.9940088, 0, 1, 0, 0.9940088, 0, 0.109300524, 8.472715, 1.5942048, 6.395875)
+
+[node name="BeginKey" type="StaticBody3D" parent="." unique_id=617072994]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.01293, 0.18399298, 8.034184)
+script = ExtResource("5_cb6ev")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BeginKey" unique_id=2116840120]
+mesh = SubResource("BoxMesh_3xd07")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BeginKey" unique_id=1992056653]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0009460449, 0)
+shape = SubResource("BoxShape3D_dwbtc")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1067984534 groups=["wood"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.283149)
+use_collision = true
+size = Vector3(3.1896973, 0.21655273, 12.089844)
+material = ExtResource("3_fbisx")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=845540317 groups=["wood"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -26.645788)
+use_collision = true
+size = Vector3(14.570557, 0.21655273, 10.635498)
+material = ExtResource("3_fbisx")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1519004113 groups=["wood"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0059509277, 4.5121245, -15.380561)
+use_collision = true
+size = Vector3(3.711731, 0.21655273, 11.89502)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="." unique_id=980321257]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6856, 3.9961944, -15.355972)
+use_collision = true
+size = Vector3(0.18164063, 7.775818, 11.764648)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="." unique_id=172619338]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6856, 3.9961998, -15.360264)
+use_collision = true
+size = Vector3(0.18164063, 7.775818, 11.897156)
+
+[node name="AreaLight3D" type="OmniLight3D" parent="." unique_id=1540708554]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 4.1668096, -15.573971)
+light_color = Color(0.9607977, 0.8006565, 0, 1)
+light_energy = 2.196
+shadow_enabled = true
+omni_range = 7.0398164
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=1804416084]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07182884, 4.4484015, -31.885387)
+size = Vector3(15.568359, 9.113403, 0.15625)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1900584941]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07182884, 4.4484015, -21.32484)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D" unique_id=279619071]
+size = Vector3(15.568359, 9.113403, 0.15625)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D5" unique_id=1324317645]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.060881257, -2.6772385, 0)
+operation = 2
+size = Vector3(2.5563965, 3.7589264, 1.1162109)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="." unique_id=991635615]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -7.3633995, 4.4483995, -26.697983)
+size = Vector3(10.739746, 9.113403, 0.15625)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="." unique_id=1976311250]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7.2072, 4.4483995, -26.697989)
+size = Vector3(10.739746, 9.113403, 0.15625)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="." unique_id=1637334654]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.656137, -26.615723)
+size = Vector3(15.623291, 0.44726563, 11.015625)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1963700622]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.818933, -26.796661)
+shadow_enabled = true
+omni_range = 17.3769

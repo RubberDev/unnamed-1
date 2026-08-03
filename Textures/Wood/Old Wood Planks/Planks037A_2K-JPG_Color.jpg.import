@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5agmct1s0de0"
-path.s3tc="res://.godot/imported/texture_09.png-8e25cd5657e2d326068eb27bfa1aacec.s3tc.ctex"
+uid="uid://ci241gl8o82yh"
+path.s3tc="res://.godot/imported/Planks037A_2K-JPG_Color.jpg-7b46886d202570fd62c25cac53e71835.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://addons/kenney_prototype_textures/dark/texture_09.png"
-dest_files=["res://.godot/imported/texture_09.png-8e25cd5657e2d326068eb27bfa1aacec.s3tc.ctex"]
+source_file="res://Textures/Wood/Old Wood Planks/Planks037A_2K-JPG_Color.jpg"
+dest_files=["res://.godot/imported/Planks037A_2K-JPG_Color.jpg-7b46886d202570fd62c25cac53e71835.s3tc.ctex"]
 
 [params]
 

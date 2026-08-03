@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://c8v7oenkhkdcj"]
 
+[ext_resource type="Script" uid="uid://4v8abxmy1hfs" path="res://Tests/pickup_object.gd" id="1_3p16f"]
+
 [sub_resource type="BoxMesh" id="BoxMesh_3xd07"]
 size = Vector3(0.3466797, 0.38452148, 0.4177246)
 
@@ -7,6 +9,7 @@ size = Vector3(0.3466797, 0.38452148, 0.4177246)
 size = Vector3(0.36132813, 0.38452148, 0.4140625)
 
 [node name="PickupCube" type="RigidBody3D" unique_id=243999079 groups=["Grabable"]]
+script = ExtResource("1_3p16f")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=572115319]
 mesh = SubResource("BoxMesh_3xd07")

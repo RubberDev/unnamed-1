@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5agmct1s0de0"
-path.s3tc="res://.godot/imported/texture_09.png-8e25cd5657e2d326068eb27bfa1aacec.s3tc.ctex"
+uid="uid://c60lq70i57hla"
+path.s3tc="res://.godot/imported/Plaster001_2K-JPG_Roughness.jpg-522526a4dc5914c0bb180f5354e24779.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://addons/kenney_prototype_textures/dark/texture_09.png"
-dest_files=["res://.godot/imported/texture_09.png-8e25cd5657e2d326068eb27bfa1aacec.s3tc.ctex"]
+source_file="res://Textures/Wall/Plaster001/Plaster001_2K-JPG_Roughness.jpg"
+dest_files=["res://.godot/imported/Plaster001_2K-JPG_Roughness.jpg-522526a4dc5914c0bb180f5354e24779.s3tc.ctex"]
 
 [params]
 

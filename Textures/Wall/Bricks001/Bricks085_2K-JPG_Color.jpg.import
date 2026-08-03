@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7aoyjswcj7eg"
-path.s3tc="res://.godot/imported/plywood_rough_1k.png-953860c871813e42cff2ffc003d9156f.s3tc.ctex"
+uid="uid://b5j45ery83ls6"
+path.s3tc="res://.godot/imported/Bricks085_2K-JPG_Color.jpg-91f69dc3d3c23f4bd0f4a45183eead4e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Textures/Wood/plywood_rough_1k.png"
-dest_files=["res://.godot/imported/plywood_rough_1k.png-953860c871813e42cff2ffc003d9156f.s3tc.ctex"]
+source_file="res://Textures/Wall/Bricks001/Bricks085_2K-JPG_Color.jpg"
+dest_files=["res://.godot/imported/Bricks085_2K-JPG_Color.jpg-91f69dc3d3c23f4bd0f4a45183eead4e.s3tc.ctex"]
 
 [params]
 

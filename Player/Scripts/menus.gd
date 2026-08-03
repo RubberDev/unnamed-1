@@ -10,6 +10,7 @@ func _ready() -> void:
 	
 	$PauseMenu/Settings/Panel/VBoxContainer/FootLabel.text = str(AudioServer.get_bus_name(2)) + " - " + str($PauseMenu/Settings/Panel/VBoxContainer/FootSlider.value * 10)
 	$PauseMenu/Settings/Panel/VBoxContainer/FootSlider.value = db_to_linear(AudioServer.get_bus_index("Footsteps"))
+	
 
 
 func _process(_delta: float) -> void:

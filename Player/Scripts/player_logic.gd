@@ -18,9 +18,9 @@ func _ready() -> void:
 	jail_mouse()
 	$Menus/PauseMenu.hide()
 
-
 ### CALL EVERY FRAME ###
 func _process(_delta: float) -> void:
+	
 	### DECREASE STAMINA ###
 	# I wonder if there is a better way to do this
 	if Input.is_action_pressed("Sprint"):
@@ -98,6 +98,7 @@ func _input(event: InputEvent) -> void:
 			if collider.has_method("Interact"):
 				collider.Interact()
 
+
 	### PICKING UP AND DROPPING THINGS ###
 	if Input.is_action_just_pressed("Grab") and Dead == false:
 		if %RayCastInteract.is_colliding():
@@ -109,12 +110,14 @@ func _input(event: InputEvent) -> void:
 					collider.global_position = $CamPoint/Hand.global_position
 					collider.rotation = Vector3(0,0,0)
 					collider.collision_layer = 0
+					collider.collision_mask = 0
 					Held_Object = collider
 					HoldingSmth = true
-	if Input.is_action_just_pressed("Drop"):
+	if Input.is_action_just_pressed("Drop") and Dead == false:
 		if HoldingSmth == true:
 			DropObj()
-	
+
+
 	### CROUCHING AND UNCROUCHING ###
 	if Input.is_action_just_pressed("Crouch") and Dead == false:
 		# Yeah thats right, on your knees like a good boy
@@ -130,7 +133,8 @@ func _input(event: InputEvent) -> void:
 				Crouched = false
 				$Collision.set_deferred("disabled", false)
 				SPEED = DEFAULT_SPEED
-	
+
+
 	### SPRINTING ###
 	if Input.is_action_pressed("Sprint") and Dead == false:
 		if Crouched == false:
@@ -150,6 +154,7 @@ func DropObj():
 	Held_Object.reparent(get_tree().current_scene)
 	Held_Object.freeze = false
 	Held_Object.collision_layer = 1
+	Held_Object.collision_mask = 1
 	Held_Object = null
 	HoldingSmth = false
 
@@ -190,7 +195,11 @@ func play_step_sound():
 	if $FloorMatCheck.is_colliding() and Dead == false:
 		var collider = $FloorMatCheck.get_collider()
 		if collider.is_in_group("grass"):
-			$Sound/footstep_Grass01.play()
+			var randint = randi_range(1,2)
+			if randint == 1:
+				$Sound/footstep_Grass01.play()
+			else:
+				$Sound/footstep_Grass02.play()
 			
 		elif collider.is_in_group("gravel"):
 			$Sound/footstep_Gravel01.play()
@@ -199,7 +208,15 @@ func play_step_sound():
 			$Sound/footstep_Metal01.play()
 			
 		elif collider.is_in_group("stone"):
-			$Sound/footstep_Stone01.play()
+			var randint = randi_range(1,2)
+			if randint == 1:
+				$Sound/footstep_Stone01.play()
+			else:
+				$Sound/footstep_Stone02.play()
 			
 		elif collider.is_in_group("wood"):
-			$Sound/footstep_Wood01.play()
+			var randint = randi_range(1,2)
+			if randint == 1:
+				$Sound/footstep_Wood01.play()
+			else:
+				$Sound/footstep_Wood02.play()

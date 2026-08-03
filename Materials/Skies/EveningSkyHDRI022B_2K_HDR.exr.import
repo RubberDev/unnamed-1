@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5agmct1s0de0"
-path.s3tc="res://.godot/imported/texture_09.png-8e25cd5657e2d326068eb27bfa1aacec.s3tc.ctex"
+uid="uid://c3tc1id7hk6ku"
+path.bptc="res://.godot/imported/EveningSkyHDRI022B_2K_HDR.exr-f9eeb54db96382b85fbdff0432db313b.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://addons/kenney_prototype_textures/dark/texture_09.png"
-dest_files=["res://.godot/imported/texture_09.png-8e25cd5657e2d326068eb27bfa1aacec.s3tc.ctex"]
+source_file="res://Materials/Skies/EveningSkyHDRI022B_2K_HDR.exr"
+dest_files=["res://.godot/imported/EveningSkyHDRI022B_2K_HDR.exr-f9eeb54db96382b85fbdff0432db313b.bptc.ctex"]
 
 [params]
 
