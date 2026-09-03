@@ -31,6 +31,22 @@ func _process(_delta: float) -> void:
 		if Crouched == true:
 			$Menus/Interface/VBoxContainer/StaminaBar.value += 0.2
 		$Menus/Interface/VBoxContainer/StaminaBar.value += 0.1
+	
+	
+	### INTERACTION TEXT ###
+	if %RayCastInteract.is_colliding():
+		var collider = %RayCastInteract.get_collider()
+		if collider.has_method("Interact"):
+			if "IntText" in collider:
+				$Menus/InteractPanel.show()
+				var IntText = collider.get("IntText")
+				%InteractLabel.text = IntText
+				if IntText == "HIDEME!":
+					$Menus/InteractPanel.hide()
+		else:
+			$Menus/InteractPanel.hide()
+	else:
+		$Menus/InteractPanel.hide()
 
 
 ### PHYSICS STUFF ###

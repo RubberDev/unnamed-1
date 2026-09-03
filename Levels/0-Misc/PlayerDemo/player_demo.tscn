@@ -4,7 +4,6 @@
 [ext_resource type="Material" uid="uid://chuf7vrvtnrge" path="res://Materials/Debug-Textures/WhiteCheckered.tres" id="2_ld26l"]
 [ext_resource type="PackedScene" uid="uid://ds0uurstfuisq" path="res://Player/Player.tscn" id="3_ld26l"]
 [ext_resource type="PackedScene" uid="uid://dc6autgx20uu7" path="res://Objects/1 Debug/evil_cube.tscn" id="4_5nq6m"]
-[ext_resource type="PackedScene" uid="uid://bl7lnvy2eq8le" path="res://Nodes/debug_node.tscn" id="4_ur6w5"]
 [ext_resource type="PackedScene" uid="uid://c8v7oenkhkdcj" path="res://Tests/pickup_object.tscn" id="5_6467s"]
 [ext_resource type="PackedScene" uid="uid://u0t1j0ojh88g" path="res://Objects/1 Debug/nice_cube.tscn" id="5_fptwy"]
 [ext_resource type="PackedScene" uid="uid://up0g1don1uj3" path="res://Objects/1 Debug/interactee_cube.tscn" id="6_87xbs"]
@@ -204,6 +203,7 @@ use_collision = true
 material = ExtResource("2_ld26l")
 
 [node name="Player" parent="." unique_id=1961546648 instance=ExtResource("3_ld26l")]
+transform = Transform3D(-0.12977047, 0, 0.99154407, 0, 1, 0, -0.99154407, 0, -0.12977047, 0, 1, 0)
 
 [node name="CamPoint" type="Node3D" parent="Player" unique_id=712572481]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.62649167, 0)
@@ -217,9 +217,6 @@ target_position = Vector3(0, 0, -2)
 
 [node name="Hand" type="Node3D" parent="Player/CamPoint" unique_id=910091115]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41060036, -0.21589112, -0.99678206)
-
-[node name="DebugNode" parent="Player/CamPoint/Hand" unique_id=1202280773 instance=ExtResource("4_ur6w5")]
-visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player" unique_id=423847977]
 libraries/ = SubResource("AnimationLibrary_6467s")
@@ -292,6 +289,15 @@ material = SubResource("StandardMaterial3D_ouiov")
 
 [node name="Health_Spawner_Node" parent="." unique_id=601064145 instance=ExtResource("15_lber8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.757942, 0.8276973, 1.5606844)
+
+[node name="Health_Spawner_Node2" parent="." unique_id=21810966 instance=ExtResource("15_lber8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.757942, 0.8276973, 2.6188254)
+
+[node name="Health_Spawner_Node3" parent="." unique_id=1242816206 instance=ExtResource("15_lber8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.757942, 0.8276973, 3.9032679)
+
+[node name="Health_Spawner_Node4" parent="." unique_id=1238055887 instance=ExtResource("15_lber8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.757942, 0.8276973, 5.1330457)
 
 [node name="PickupCube" parent="." unique_id=243999079 instance=ExtResource("5_6467s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06533432, 0.31726027, -2.9150956)

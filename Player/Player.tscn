@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://2nelg4o7s51m" path="res://Player/Scripts/player_logic.gd" id="1_3qydi"]
 [ext_resource type="Theme" uid="uid://cjpxvynj4h0ss" path="res://Player/MainUItheme.tres" id="2_q3lat"]
 [ext_resource type="Script" uid="uid://dv8qe28bxxrvy" path="res://Player/Scripts/menus.gd" id="2_tok1r"]
+[ext_resource type="FontFile" uid="uid://dyh6ijkoyx752" path="res://Fonts/Frantically-Regular (1).ttf" id="4_5wa8t"]
 [ext_resource type="AudioStream" uid="uid://cuq7fv7ynmhyf" path="res://Sounds/Footsteps/footstep_Grass01.mp3" id="4_v0k0e"]
 [ext_resource type="AudioStream" uid="uid://dvtmhkmkhnvsl" path="res://Sounds/Footsteps/footstep_Grass02.mp3" id="5_5wa8t"]
 [ext_resource type="AudioStream" uid="uid://47wom1yossar" path="res://Sounds/Footsteps/footstep_Gravel01.wav" id="6_p7tob"]
@@ -21,8 +22,13 @@ shadow_offset = Vector2(2, 2)
 bg_color = Color(0.31317842, 0.7566848, 0.8762505, 1)
 
 [sub_resource type="Theme" id="Theme_8g4oa"]
+Button/fonts/font = ExtResource("4_5wa8t")
+ProgressBar/fonts/font = ExtResource("4_5wa8t")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_tok1r")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_ddoul")
+
+[sub_resource type="LabelSettings" id="LabelSettings_xtcgn"]
+font = ExtResource("4_5wa8t")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l2ndj"]
 
@@ -70,8 +76,47 @@ theme = SubResource("Theme_8g4oa")
 step = 0.05
 value = 100.0
 
+[node name="InteractPanel" type="Control" parent="Menus" unique_id=1508095934]
+layout_mode = 3
+anchor_left = 0.307
+anchor_top = 0.78900003
+anchor_right = 0.693
+anchor_bottom = 0.94600004
+offset_left = 0.33599854
+offset_top = -0.2720337
+offset_right = -0.33599854
+offset_bottom = -0.0079956055
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Panel" type="Panel" parent="Menus/InteractPanel" unique_id=325341616]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InteractLabel" type="Label" parent="Menus/InteractPanel/Panel" unique_id=1085445967]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = -6.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Sample Text"
+label_settings = SubResource("LabelSettings_xtcgn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="PauseMenu" type="Control" parent="Menus" unique_id=1202040894]
 process_mode = 3
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -100,6 +145,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 76.0
 grow_horizontal = 2
+theme_override_font_sizes/font_size = 60
 text = "Paused"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -117,26 +163,33 @@ grow_vertical = 2
 
 [node name="Resume" type="Button" parent="Menus/PauseMenu/Panel/PauseMain" unique_id=439446732]
 layout_mode = 2
+theme = ExtResource("2_q3lat")
+theme_override_fonts/font = ExtResource("4_5wa8t")
 text = "Resume"
 
 [node name="Settings" type="Button" parent="Menus/PauseMenu/Panel/PauseMain" unique_id=1171532248]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_5wa8t")
 text = "Settings"
 
 [node name="Save" type="Button" parent="Menus/PauseMenu/Panel/PauseMain" unique_id=136177584]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_5wa8t")
 text = "Save game"
 
 [node name="Load" type="Button" parent="Menus/PauseMenu/Panel/PauseMain" unique_id=429300922]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_5wa8t")
 text = "Load save"
 
 [node name="Quit2Menu" type="Button" parent="Menus/PauseMenu/Panel/PauseMain" unique_id=703910310]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_5wa8t")
 text = "Quit to menu"
 
 [node name="Quit2Desktop" type="Button" parent="Menus/PauseMenu/Panel/PauseMain" unique_id=1781708209]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_5wa8t")
 text = "Quit to desktop"
 
 [node name="Settings" type="Control" parent="Menus/PauseMenu" unique_id=198812927]
@@ -220,7 +273,7 @@ text = "Sensitivity: VAL"
 [node name="SensSlide" type="HSlider" parent="Menus/PauseMenu/Settings/Panel/VBoxContainer" unique_id=859479252]
 layout_mode = 2
 min_value = 0.001
-max_value = 0.1
+max_value = 0.01
 step = 0.001
 value = 0.005
 

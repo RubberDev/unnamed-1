@@ -90,7 +90,7 @@ func _on_fo_vslide_value_changed(value: float) -> void:
 
 ### SENSITIVITY ###
 func _on_sens_slide_value_changed(value: float) -> void:
-	$PauseMenu/Settings/Panel/VBoxContainer/SensLabel.text = "Sensitivity: " + str(value * 1000)
+	$PauseMenu/Settings/Panel/VBoxContainer/SensLabel.text = "Sensitivity: " + str(value * 10000)
 	
 	$"..".SENSITIVITY = value
 

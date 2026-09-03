@@ -1,5 +1,7 @@
 [gd_resource type="Theme" format=3 uid="uid://cjpxvynj4h0ss"]
 
+[ext_resource type="FontFile" uid="uid://dyh6ijkoyx752" path="res://Fonts/Frantically-Regular (1).ttf" id="1_xweyq"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vgngc"]
 bg_color = Color(0.30692264, 0.3069227, 0.30692258, 1)
 shadow_size = 8
@@ -13,6 +15,9 @@ shadow_offset = Vector2(2, 2)
 bg_color = Color(0.68440056, 0.15735272, 0.19385353, 1)
 
 [resource]
+default_font = ExtResource("1_xweyq")
+Label/fonts/font = ExtResource("1_xweyq")
 Panel/styles/panel = SubResource("StyleBoxFlat_vgngc")
+ProgressBar/fonts/font = ExtResource("1_xweyq")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_yddbp")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_xweyq")

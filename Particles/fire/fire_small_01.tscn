@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://b58b5ballp1lm"]
+
+[ext_resource type="Texture2D" uid="uid://88uraeg5k2n1" path="res://Textures/Smoke/blackSmoke00.png" id="1_bjpci"]
+
+[sub_resource type="Gradient" id="Gradient_bjpci"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.42537314, 0.42537314, 0.42537314, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bjpci"]
+gradient = SubResource("Gradient_bjpci")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jq8tk"]
+emission_shape_scale = Vector3(0.2, 0.2, 0.2)
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(0, 2, 0)
+color_ramp = SubResource("GradientTexture1D_bjpci")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6fhyq"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.77384984, 0.42168927, 1.92523e-07, 1)
+albedo_texture = ExtResource("1_bjpci")
+emission_enabled = true
+emission = Color(0.95587224, 0.55385864, 3.85046e-07, 1)
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3xd07"]
+material = SubResource("StandardMaterial3D_6fhyq")
+size = Vector2(1, 1)
+orientation = 2
+
+[node name="FireSmall01" type="GPUParticles3D" unique_id=728100518]
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_jq8tk")
+draw_pass_1 = SubResource("PlaneMesh_3xd07")
